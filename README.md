@@ -1,0 +1,64 @@
+# Cross-Lingual Multi-Label Emotion Classification with LLMs (XED) — Group 9
+
+Course project for *Introduction to Large Language Models* (University of Groningen).
+
+We compare **prompt engineering** (zero-shot and five-shot) with **parameter-efficient
+fine-tuning** (QLoRA) for multi-label emotion classification of movie subtitles from the
+[XED dataset](https://github.com/Helsinki-NLP/XED), on **English** and **Spanish**
+(assigned language, resource band 5, ~11,303 projected lines).
+
+Label space (Plutchik): `anger, anticipation, disgust, fear, joy, sadness, surprise, trust`.
+
+## Repository structure
+
+```
+data/        loading XED, pairing EN–ES by alignment ID, deduplication, stratified split
+splits/      fixed train/dev/test alignment IDs (committed for reproducibility)
+eval/        output parser and multi-label metrics (shared by all experiments)
+prompting/   zero-shot and five-shot prompting
+peft/        QLoRA training (English-only, Spanish-only, bilingual)
+configs/     one YAML config per experiment
+jobs/        SLURM job scripts for Hábrók
+results/     predictions and metrics per experiment
+```
+
+## Setup
+
+Requires [uv](https://docs.astral.sh/uv/) and Python 3.12.
+
+```bash
+git clone <repo-url>
+cd llm-xed-group9
+uv sync
+```
+
+On Hábrók, keep caches out of the home directory:
+
+```bash
+export HF_HOME=/scratch/$USER/hf_cache
+export UV_CACHE_DIR=/scratch/$USER/uv_cache
+```
+
+## Data
+
+The dataset is **not** included in this repository. Download XED into `data/raw/`
+(instructions/script to be added in `data/`).
+
+## Reproducing results
+
+_To be completed: exact commands for data preparation, prompting, PEFT training and evaluation._
+
+## Experimental matrix
+
+| Condition | Model(s) | Training / demonstrations | Evaluated on |
+|---|---|---|---|
+| Zero-shot | Primary + second | None | EN + ES |
+| Five-shot | Primary + second | 5 fixed aligned train examples | EN + ES |
+| English-only PEFT | Primary | EN train | EN + ES |
+| Spanish-only PEFT | Primary | ES train | ES |
+| Bilingual PEFT | Primary | EN + ES train | EN + ES |
+
+## Citation
+
+Öhman, E., Pàmies, M., Kajava, K. and Tiedemann, J. (2020). XED: A Multilingual Dataset for
+Sentiment Analysis and Emotion Detection. *COLING 2020*.
