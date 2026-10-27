@@ -1,0 +1,23 @@
+# zero-shot prompting. Primary model (prompting + PEFT).
+experiment: qwen3-8b_zero-shot
+
+model:
+  name: Qwen/Qwen3-8B
+  revision: main  # the resolved commit hash is saved in run_info.json
+  dtype: bfloat16  # use float16 on GPUs without bfloat16 support (e.g. V100)
+chat_template_kwargs:
+  enable_thinking: false  # Qwen3 "thinking mode" off: answer directly
+
+prompt:
+  variant: v1  # v1 / v2 / v3, see prompting/prompts.py; compare only on dev
+  n_shots: 0
+  demos_file: null
+
+languages: [en, es]
+
+decoding:
+  do_sample: false  # greedy, deterministic
+  max_new_tokens: 64
+
+batch_size: 16
+seed: 42

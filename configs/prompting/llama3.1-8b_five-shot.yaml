@@ -1,0 +1,22 @@
+# five-shot prompting. Second model (prompting only); gated on Hugging Face, needs an access token.
+experiment: llama3.1-8b_five-shot
+
+model:
+  name: meta-llama/Llama-3.1-8B-Instruct
+  revision: main  # the resolved commit hash is saved in run_info.json
+  dtype: bfloat16  # use float16 on GPUs without bfloat16 support (e.g. V100)
+chat_template_kwargs: {}
+
+prompt:
+  variant: v1  # v1 / v2 / v3, see prompting/prompts.py; compare only on dev
+  n_shots: 5
+  demos_file: splits/fewshot_ids.txt  # from prompting/select_demos.py --seed 42
+
+languages: [en, es]
+
+decoding:
+  do_sample: false  # greedy, deterministic
+  max_new_tokens: 64
+
+batch_size: 16
+seed: 42

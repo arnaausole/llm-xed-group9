@@ -59,7 +59,29 @@ The committed `splits/*_ids.txt` must be reproduced exactly; the scripts check t
 
 ## Reproducing results
 
-_To be completed: exact commands for prompting, PEFT training and evaluation._
+### Prompting
+
+Models: primary `Qwen/Qwen3-8B` (thinking mode disabled), second
+`meta-llama/Llama-3.1-8B-Instruct` (gated: accept the licence on Hugging Face and log in
+with a read token on the machine that runs it; never commit the token).
+
+```bash
+# five fixed demonstrations from the training set (already committed in splits/)
+uv run python prompting/select_demos.py --seed 42
+
+# development set (all prompt decisions are made here)
+sbatch jobs/prompting.slurm configs/prompting/qwen3-8b_zero-shot.yaml dev
+sbatch jobs/prompting.slurm configs/prompting/qwen3-8b_five-shot.yaml dev
+sbatch jobs/prompting.slurm configs/prompting/llama3.1-8b_zero-shot.yaml dev
+sbatch jobs/prompting.slurm configs/prompting/llama3.1-8b_five-shot.yaml dev
+
+# final evaluation, once the prompt is frozen: replace dev with test
+```
+
+Outputs go to `results/prompting/<experiment>/<split>/` (predictions, rendered prompt,
+metrics, run info).
+
+_To be completed: PEFT training and evaluation._
 
 ## Experimental matrix
 
