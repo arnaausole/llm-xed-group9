@@ -9,7 +9,13 @@ Steps
 3. Link every projection row to its pair. Both files are in the same order, so we walk
    through them sequentially and match on the Spanish text (robust to repeated short lines
    such as "¡No!", which would be ambiguous with a plain dictionary lookup).
-4. Labels are projected from the English annotation, so the English line and the Spanish
+4. Keep only pairs whose source file is English (``en/...``). In ``pairs-es.txt`` the
+   source side of many pairs is a Danish subtitle file (``da/...``), so its "English"
+   text is Danish; such pairs cannot form a directly aligned English-Spanish example.
+   (An English line could be reached through the Danish-English alignments in
+   ``pairs-en.txt``, but that two-step alignment is noisier, so it is not used.)
+   ``--keep-non-english-source`` disables this filter.
+   Labels are projected from the English annotation, so the English line and the Spanish
    line of a pair share the same label set.
 5. Group exact duplicates (same English text OR same Spanish text, after whitespace
    normalisation) with union-find, so that a duplicate can never cross partitions.
@@ -192,11 +198,12 @@ def stratified_split(records, groups, seed: int):
 
 
 # --------------------------------------------------------------------------- stats
-def stats(records, parts, n_unmatched, group_sizes, seed):
+def stats(records, parts, n_unmatched, n_non_english, group_sizes, seed):
     out = {
         "seed": seed,
         "n_aligned_pairs": len(records),
         "n_unmatched_projection_rows": n_unmatched,
+        "n_dropped_non_english_source": n_non_english,
         "n_duplicate_groups": len(group_sizes),
         "n_records_in_multi_record_groups": sum(
             c for c in group_sizes.values() if c > 1
@@ -240,11 +247,16 @@ def main():
     ap.add_argument("--out", type=Path, default=Path("data/processed"))
     ap.add_argument("--splits", type=Path, default=Path("splits"))
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--keep-non-english-source", action="store_true")
     args = ap.parse_args()
 
     projections = read_projections(args.xed / "Projections" / "es-projections.tsv")
     pairs = read_pairs(args.xed / "subtitle-retrieval" / "students" / "pairs-es.txt")
     records, unmatched = link(projections, pairs)
+    n_linked = len(records)
+    if not args.keep_non_english_source:
+        records = [r for r in records if r["en_file"].startswith("en/")]
+    n_non_english = n_linked - len(records)
 
     groups = duplicate_groups(records)
     group_sizes = Counter(groups)
@@ -268,12 +280,13 @@ def main():
             "\n".join(r["align_id"] for r in sub) + "\n", encoding="utf-8"
         )
 
-    st = stats(records, parts, len(unmatched), group_sizes, args.seed)
+    st = stats(records, parts, len(unmatched), n_non_english, group_sizes, args.seed)
     (args.splits / "stats.json").write_text(json.dumps(st, indent=2), encoding="utf-8")
 
     print(
-        f"Projection rows: {len(projections)} | linked: {len(records)} "
-        f"| dropped: {len(unmatched)}"
+        f"Projection rows: {len(projections)} | linked: {n_linked} "
+        f"| dropped: {len(unmatched)} | non-English source: {n_non_english} "
+        f"| kept: {len(records)}"
     )
     print(
         f"Duplicate groups: {st['n_duplicate_groups']} "

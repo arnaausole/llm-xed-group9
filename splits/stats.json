@@ -1,97 +1,98 @@
 {
   "seed": 42,
-  "n_aligned_pairs": 11261,
+  "n_aligned_pairs": 4967,
   "n_unmatched_projection_rows": 43,
-  "n_duplicate_groups": 7692,
-  "n_records_in_multi_record_groups": 6412,
+  "n_dropped_non_english_source": 6294,
+  "n_duplicate_groups": 3869,
+  "n_records_in_multi_record_groups": 2137,
   "train": {
-    "n": 7856,
-    "share": 0.6976,
+    "n": 3443,
+    "share": 0.6932,
     "label_counts": {
-      "anger": 2109,
-      "anticipation": 1831,
-      "disgust": 1025,
-      "fear": 1215,
-      "joy": 1332,
-      "sadness": 1263,
-      "surprise": 1363,
-      "trust": 1323
+      "anger": 948,
+      "anticipation": 812,
+      "disgust": 454,
+      "fear": 534,
+      "joy": 613,
+      "sadness": 519,
+      "surprise": 594,
+      "trust": 628
     },
     "label_share": {
-      "anger": 0.2685,
-      "anticipation": 0.2331,
-      "disgust": 0.1305,
-      "fear": 0.1547,
-      "joy": 0.1696,
-      "sadness": 0.1608,
-      "surprise": 0.1735,
-      "trust": 0.1684
+      "anger": 0.2753,
+      "anticipation": 0.2358,
+      "disgust": 0.1319,
+      "fear": 0.1551,
+      "joy": 0.178,
+      "sadness": 0.1507,
+      "surprise": 0.1725,
+      "trust": 0.1824
     },
     "labels_per_line": {
-      "1": 5061,
-      "2": 2172,
-      "3": 476,
-      "4+": 147
+      "1": 2188,
+      "2": 939,
+      "3": 246,
+      "4+": 70
     }
   },
   "dev": {
-    "n": 2247,
-    "share": 0.1995,
+    "n": 1016,
+    "share": 0.2046,
     "label_counts": {
-      "anger": 587,
-      "anticipation": 523,
-      "disgust": 300,
-      "fear": 346,
-      "joy": 379,
-      "sadness": 354,
-      "surprise": 397,
-      "trust": 402
+      "anger": 273,
+      "anticipation": 231,
+      "disgust": 135,
+      "fear": 156,
+      "joy": 181,
+      "sadness": 155,
+      "surprise": 168,
+      "trust": 173
     },
     "label_share": {
-      "anger": 0.2612,
-      "anticipation": 0.2328,
-      "disgust": 0.1335,
-      "fear": 0.154,
-      "joy": 0.1687,
-      "sadness": 0.1575,
-      "surprise": 0.1767,
-      "trust": 0.1789
+      "anger": 0.2687,
+      "anticipation": 0.2274,
+      "disgust": 0.1329,
+      "fear": 0.1535,
+      "joy": 0.1781,
+      "sadness": 0.1526,
+      "surprise": 0.1654,
+      "trust": 0.1703
     },
     "labels_per_line": {
-      "1": 1447,
-      "2": 585,
-      "3": 191,
-      "4+": 24
+      "1": 660,
+      "2": 273,
+      "3": 68,
+      "4+": 15
     }
   },
   "test": {
-    "n": 1158,
-    "share": 0.1028,
+    "n": 508,
+    "share": 0.1023,
     "label_counts": {
-      "anger": 301,
-      "anticipation": 271,
-      "disgust": 149,
-      "fear": 192,
-      "joy": 185,
-      "sadness": 186,
-      "surprise": 188,
-      "trust": 194
+      "anger": 134,
+      "anticipation": 110,
+      "disgust": 62,
+      "fear": 73,
+      "joy": 93,
+      "sadness": 77,
+      "surprise": 81,
+      "trust": 91
     },
     "label_share": {
-      "anger": 0.2599,
-      "anticipation": 0.234,
-      "disgust": 0.1287,
-      "fear": 0.1658,
-      "joy": 0.1598,
-      "sadness": 0.1606,
-      "surprise": 0.1623,
-      "trust": 0.1675
+      "anger": 0.2638,
+      "anticipation": 0.2165,
+      "disgust": 0.122,
+      "fear": 0.1437,
+      "joy": 0.1831,
+      "sadness": 0.1516,
+      "surprise": 0.1594,
+      "trust": 0.1791
     },
     "labels_per_line": {
-      "1": 760,
-      "2": 309,
-      "3": 72,
-      "4+": 17
+      "1": 337,
+      "2": 141,
+      "3": 22,
+      "4+": 8
     }
   }
 }

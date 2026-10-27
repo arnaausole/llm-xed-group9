@@ -5,7 +5,7 @@ Course project for *Introduction to Large Language Models* (University of Gronin
 We compare **prompt engineering** (zero-shot and five-shot) with **parameter-efficient
 fine-tuning** (QLoRA) for multi-label emotion classification of movie subtitles from the
 [XED dataset](https://github.com/Helsinki-NLP/XED), on **English** and **Spanish**
-(assigned language, resource band 5, ~11,303 projected lines).
+(assigned language, resource band 5, ~11,303 projected lines; 4,967 matched English–Spanish pairs after removing Danish-source pairs, see Data).
 
 Label space (Plutchik): `anger, anticipation, disgust, fear, joy, sadness, surprise, trust`.
 
@@ -41,12 +41,25 @@ export UV_CACHE_DIR=/scratch/$USER/uv_cache
 
 ## Data
 
-The dataset is **not** included in this repository. Download XED into `data/raw/`
-(instructions/script to be added in `data/`).
+The dataset is **not** included in this repository.
+
+```bash
+bash data/download_xed.sh                                     # XED at a pinned commit
+uv run python data/prepare_data.py --xed data/raw/XED --seed 42
+```
+
+Of the 11,261 Spanish projection rows linked to `pairs-es.txt`, 6,294 come from a
+**Danish** source subtitle file (`da/...`), so their "English" side is Danish. This is
+the same in the latest upstream XED version and in every `pairs-*.txt` file. English
+lines could only be reached through a second, Danish–English alignment
+(`pairs-en.txt`), which is noisier, so these pairs are dropped (see
+`data/prepare_data.py`). This leaves **4,967 directly aligned English–Spanish pairs**:
+3,443 train / 1,016 dev / 508 test.
+The committed `splits/*_ids.txt` must be reproduced exactly; the scripts check this.
 
 ## Reproducing results
 
-_To be completed: exact commands for data preparation, prompting, PEFT training and evaluation._
+_To be completed: exact commands for prompting, PEFT training and evaluation._
 
 ## Experimental matrix
 
