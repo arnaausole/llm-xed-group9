@@ -1,0 +1,97 @@
+{
+  "seed": 42,
+  "n_aligned_pairs": 11261,
+  "n_unmatched_projection_rows": 43,
+  "n_duplicate_groups": 7692,
+  "n_records_in_multi_record_groups": 6412,
+  "train": {
+    "n": 7856,
+    "share": 0.6976,
+    "label_counts": {
+      "anger": 2109,
+      "anticipation": 1831,
+      "disgust": 1025,
+      "fear": 1215,
+      "joy": 1332,
+      "sadness": 1263,
+      "surprise": 1363,
+      "trust": 1323
+    },
+    "label_share": {
+      "anger": 0.2685,
+      "anticipation": 0.2331,
+      "disgust": 0.1305,
+      "fear": 0.1547,
+      "joy": 0.1696,
+      "sadness": 0.1608,
+      "surprise": 0.1735,
+      "trust": 0.1684
+    },
+    "labels_per_line": {
+      "1": 5061,
+      "2": 2172,
+      "3": 476,
+      "4+": 147
+    }
+  },
+  "dev": {
+    "n": 2247,
+    "share": 0.1995,
+    "label_counts": {
+      "anger": 587,
+      "anticipation": 523,
+      "disgust": 300,
+      "fear": 346,
+      "joy": 379,
+      "sadness": 354,
+      "surprise": 397,
+      "trust": 402
+    },
+    "label_share": {
+      "anger": 0.2612,
+      "anticipation": 0.2328,
+      "disgust": 0.1335,
+      "fear": 0.154,
+      "joy": 0.1687,
+      "sadness": 0.1575,
+      "surprise": 0.1767,
+      "trust": 0.1789
+    },
+    "labels_per_line": {
+      "1": 1447,
+      "2": 585,
+      "3": 191,
+      "4+": 24
+    }
+  },
+  "test": {
+    "n": 1158,
+    "share": 0.1028,
+    "label_counts": {
+      "anger": 301,
+      "anticipation": 271,
+      "disgust": 149,
+      "fear": 192,
+      "joy": 185,
+      "sadness": 186,
+      "surprise": 188,
+      "trust": 194
+    },
+    "label_share": {
+      "anger": 0.2599,
+      "anticipation": 0.234,
+      "disgust": 0.1287,
+      "fear": 0.1658,
+      "joy": 0.1598,
+      "sadness": 0.1606,
+      "surprise": 0.1623,
+      "trust": 0.1675
+    },
+    "labels_per_line": {
+      "1": 760,
+      "2": 309,
+      "3": 72,
+      "4+": 17
+    }
+  }
+}
