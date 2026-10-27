@@ -1,0 +1,48 @@
+# Spanish-only QLoRA fine-tuning of the primary model.
+experiment: qwen3-8b_qlora_es
+
+model:
+  name: Qwen/Qwen3-8B
+  revision: main  # the resolved commit hash is saved in train_info.json
+  dtype: bfloat16  # use float16 on GPUs without bfloat16 support (e.g. V100)
+chat_template_kwargs:
+  enable_thinking: false  # same as prompting; also used to render training examples
+
+prompt:
+  variant: v1  # zero-shot prompt from prompting/prompts.py, no demonstrations
+
+train_languages: [es]
+eval_languages: [es]
+
+quantization:  # QLoRA: frozen base model in 4-bit NF4 during training
+  load_in_4bit: true
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_use_double_quant: true
+  bnb_4bit_compute_dtype: bfloat16
+
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  bias: none
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+training:
+  learning_rate: 2.0e-4
+  num_train_epochs: 3
+  per_device_train_batch_size: 8
+  gradient_accumulation_steps: 2  # effective batch size 16
+  per_device_eval_batch_size: 16
+  max_length: 512  # prompt + answer is about 250 tokens
+  warmup_steps: 0.03  # ratio of total steps
+  lr_scheduler_type: cosine
+  optim: paged_adamw_8bit
+  gradient_checkpointing: true
+
+# evaluation (peft/evaluate_peft.py)
+decoding:
+  do_sample: false
+  max_new_tokens: 64
+batch_size: 16
+
+seed: 42

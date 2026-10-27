@@ -81,7 +81,23 @@ sbatch jobs/prompting.slurm configs/prompting/llama3.1-8b_five-shot.yaml dev
 Outputs go to `results/prompting/<experiment>/<split>/` (predictions, rendered prompt,
 metrics, run info).
 
-_To be completed: PEFT training and evaluation._
+### PEFT (QLoRA)
+
+Primary model only. One config per condition in `configs/peft/` (English-only,
+Spanish-only, bilingual). The job trains, keeps the epoch checkpoint with the lowest dev
+loss, and evaluates it on dev.
+
+```bash
+sbatch jobs/peft_train.slurm configs/peft/qwen3-8b_qlora_en.yaml
+sbatch jobs/peft_train.slurm configs/peft/qwen3-8b_qlora_es.yaml
+sbatch --time=10:00:00 jobs/peft_train.slurm configs/peft/qwen3-8b_qlora_bilingual.yaml
+
+# final evaluation, once the configuration is frozen
+uv run python peft/evaluate_peft.py --config configs/peft/qwen3-8b_qlora_en.yaml --split test
+```
+
+Adapters and checkpoints go to `outputs/peft/<experiment>/` (not committed); metrics and
+predictions to `results/peft/<experiment>/<split>/`.
 
 ## Experimental matrix
 
