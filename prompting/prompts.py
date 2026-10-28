@@ -57,13 +57,15 @@ _V1 = """You are an annotator of emotions in movie subtitles.
 Read one subtitle line and decide which emotions it expresses. Use only these eight labels:
 {labels}
 
-A line can express one emotion or several emotions at the same time; return every label that applies, and at least one.
+A line can express one emotion or several emotions at the same time; return every label that applies.
+Every subtitle line expresses at least one of these emotions, even if it is subtle. Never return an empty list; if unsure, choose the most likely emotion.
 Answer with a JSON list that contains only the label names above, written in English exactly as shown, and nothing else."""
 
 _V2 = """Task: multi-label emotion classification of a single movie subtitle line.
 Allowed labels:
 {labels}
 
+Every line expresses at least one of these emotions, even if subtle; never return an empty list.
 Return all labels that apply (one or more) as a JSON list of English label names, e.g. ["<label>", "<label>"]. Output only the JSON list."""
 
 SYSTEM_PROMPTS = {

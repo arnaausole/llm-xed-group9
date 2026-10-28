@@ -145,26 +145,28 @@ def evaluate_languages(
 
         parsed = [parse_output(o) for o in raw]
         preds = [labels for labels, _ in parsed]
-        malformed = [bad for _, bad in parsed]
+        status = [s for _, s in parsed]
         gold = [r["labels"] for r in records]
 
         with (out_dir / f"predictions_{lang}.jsonl").open("w", encoding="utf-8") as f:
-            for r, o, pr, bad in zip(records, raw, preds, malformed):
+            for r, o, pr, st in zip(records, raw, preds, status):
                 row = {
                     "align_id": r["align_id"],
                     "text": r[f"text_{lang}"],
                     "gold": r["labels"],
                     "raw_output": o,
                     "pred": pr,
-                    "malformed": bad,
+                    "status": st,
+                    "malformed": st != "ok",
                 }
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
-        all_metrics[lang] = compute_metrics(gold, preds, malformed)
+        all_metrics[lang] = compute_metrics(gold, preds, status)
         m = all_metrics[lang]
         print(
             f"  micro-F1 {m['micro_f1']:.3f} | Jaccard {m['jaccard_samples']:.3f} "
-            f"| macro-F1 {m['macro_f1']:.3f} | malformed {m['malformed_rate']:.1%}"
+            f"| macro-F1 {m['macro_f1']:.3f} | malformed {m['malformed_rate']:.1%} "
+            f"(empty list {m['empty_list_rate']:.1%}, invalid {m['invalid_rate']:.1%})"
         )
 
     (out_dir / "metrics.json").write_text(json.dumps(all_metrics, indent=2))
