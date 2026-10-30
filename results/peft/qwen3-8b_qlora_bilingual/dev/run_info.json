@@ -1,0 +1,81 @@
+{
+  "config": {
+    "experiment": "qwen3-8b_qlora_bilingual",
+    "model": {
+      "name": "Qwen/Qwen3-8B",
+      "revision": "main",
+      "dtype": "bfloat16"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "prompt": {
+      "variant": "v1"
+    },
+    "train_languages": [
+      "en",
+      "es"
+    ],
+    "eval_languages": [
+      "en",
+      "es"
+    ],
+    "quantization": {
+      "load_in_4bit": true,
+      "bnb_4bit_quant_type": "nf4",
+      "bnb_4bit_use_double_quant": true,
+      "bnb_4bit_compute_dtype": "bfloat16"
+    },
+    "lora": {
+      "r": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.05,
+      "bias": "none",
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ]
+    },
+    "training": {
+      "learning_rate": 0.0002,
+      "num_train_epochs": 3,
+      "per_device_train_batch_size": 8,
+      "gradient_accumulation_steps": 2,
+      "per_device_eval_batch_size": 16,
+      "max_length": 512,
+      "warmup_steps": 0.03,
+      "lr_scheduler_type": "cosine",
+      "optim": "paged_adamw_8bit",
+      "gradient_checkpointing": true
+    },
+    "decoding": {
+      "do_sample": false,
+      "max_new_tokens": 64
+    },
+    "batch_size": 16,
+    "seed": 42
+  },
+  "config_file": "configs/peft/qwen3-8b_qlora_bilingual.yaml",
+  "split": "dev",
+  "limit": null,
+  "n_examples": 1016,
+  "adapter": "outputs/peft/qwen3-8b_qlora_bilingual/adapter",
+  "best_checkpoint": "outputs/peft/qwen3-8b_qlora_bilingual/checkpoint-431",
+  "model_commit": "b968826d9c46dd6066d109eabc6255188de91218",
+  "runtime_seconds": {
+    "en": 102.8,
+    "es": 104.3
+  },
+  "device": "NVIDIA A100-PCIE-40GB",
+  "versions": {
+    "python": "3.12.16",
+    "torch": "2.14.1+cu130",
+    "transformers": "5.20.2"
+  },
+  "timestamp": "2026-10-30 14:23:32"
+}
