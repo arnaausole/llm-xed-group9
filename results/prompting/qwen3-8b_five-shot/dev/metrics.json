@@ -1,0 +1,152 @@
+{
+  "en": {
+    "micro_f1": 0.4746957078795644,
+    "jaccard_samples": 0.3965879265091863,
+    "macro_f1": 0.47029574115894435,
+    "micro_precision": 0.4490909090909091,
+    "micro_recall": 0.5033967391304348,
+    "hamming_loss": 0.2017716535433071,
+    "exact_match": 0.1889763779527559,
+    "per_label": {
+      "anger": {
+        "precision": 0.675,
+        "recall": 0.4945054945054945,
+        "f1": 0.5708245243128964,
+        "support": 273
+      },
+      "anticipation": {
+        "precision": 0.5579710144927537,
+        "recall": 0.3333333333333333,
+        "f1": 0.4173441734417344,
+        "support": 231
+      },
+      "disgust": {
+        "precision": 0.37790697674418605,
+        "recall": 0.48148148148148145,
+        "f1": 0.4234527687296417,
+        "support": 135
+      },
+      "fear": {
+        "precision": 0.40086206896551724,
+        "recall": 0.5961538461538461,
+        "f1": 0.4793814432989691,
+        "support": 156
+      },
+      "joy": {
+        "precision": 0.5606060606060606,
+        "recall": 0.4088397790055249,
+        "f1": 0.4728434504792332,
+        "support": 181
+      },
+      "sadness": {
+        "precision": 0.3864406779661017,
+        "recall": 0.7354838709677419,
+        "f1": 0.5066666666666667,
+        "support": 155
+      },
+      "surprise": {
+        "precision": 0.33860759493670883,
+        "recall": 0.6369047619047619,
+        "f1": 0.44214876033057854,
+        "support": 168
+      },
+      "trust": {
+        "precision": 0.46060606060606063,
+        "recall": 0.4393063583815029,
+        "f1": 0.44970414201183434,
+        "support": 173
+      }
+    },
+    "n": 1016,
+    "label_order": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust"
+    ],
+    "zero_division": 0,
+    "sklearn_version": "1.9.1",
+    "malformed_rate": 0.003937007874015748,
+    "empty_list_rate": 0.002952755905511811,
+    "invalid_rate": 0.000984251968503937
+  },
+  "es": {
+    "micro_f1": 0.40897097625329815,
+    "jaccard_samples": 0.3428805774278215,
+    "macro_f1": 0.40332878154115465,
+    "micro_precision": 0.3974358974358974,
+    "micro_recall": 0.421195652173913,
+    "hamming_loss": 0.2204724409448819,
+    "exact_match": 0.16929133858267717,
+    "per_label": {
+      "anger": {
+        "precision": 0.5752688172043011,
+        "recall": 0.39194139194139194,
+        "f1": 0.4662309368191721,
+        "support": 273
+      },
+      "anticipation": {
+        "precision": 0.6063829787234043,
+        "recall": 0.24675324675324675,
+        "f1": 0.3507692307692308,
+        "support": 231
+      },
+      "disgust": {
+        "precision": 0.3262411347517731,
+        "recall": 0.34074074074074073,
+        "f1": 0.3333333333333333,
+        "support": 135
+      },
+      "fear": {
+        "precision": 0.32113821138211385,
+        "recall": 0.5064102564102564,
+        "f1": 0.39303482587064675,
+        "support": 156
+      },
+      "joy": {
+        "precision": 0.5317460317460317,
+        "recall": 0.3701657458563536,
+        "f1": 0.4364820846905538,
+        "support": 181
+      },
+      "sadness": {
+        "precision": 0.3344370860927152,
+        "recall": 0.6516129032258065,
+        "f1": 0.4420131291028446,
+        "support": 155
+      },
+      "surprise": {
+        "precision": 0.32131147540983607,
+        "recall": 0.5833333333333334,
+        "f1": 0.4143763213530655,
+        "support": 168
+      },
+      "trust": {
+        "precision": 0.40625,
+        "recall": 0.37572254335260113,
+        "f1": 0.39039039039039036,
+        "support": 173
+      }
+    },
+    "n": 1016,
+    "label_order": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust"
+    ],
+    "zero_division": 0,
+    "sklearn_version": "1.9.1",
+    "malformed_rate": 0.004921259842519685,
+    "empty_list_rate": 0.002952755905511811,
+    "invalid_rate": 0.001968503937007874
+  }
+}

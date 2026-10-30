@@ -1,0 +1,152 @@
+{
+  "en": {
+    "micro_f1": 0.4430473372781065,
+    "jaccard_samples": 0.3762303149606299,
+    "macro_f1": 0.42789034385032254,
+    "micro_precision": 0.4862012987012987,
+    "micro_recall": 0.406929347826087,
+    "hamming_loss": 0.18528543307086615,
+    "exact_match": 0.23031496062992127,
+    "per_label": {
+      "anger": {
+        "precision": 0.6796116504854369,
+        "recall": 0.5128205128205128,
+        "f1": 0.5845511482254697,
+        "support": 273
+      },
+      "anticipation": {
+        "precision": 0.55,
+        "recall": 0.19047619047619047,
+        "f1": 0.2829581993569132,
+        "support": 231
+      },
+      "disgust": {
+        "precision": 0.4180327868852459,
+        "recall": 0.37777777777777777,
+        "f1": 0.3968871595330739,
+        "support": 135
+      },
+      "fear": {
+        "precision": 0.4260355029585799,
+        "recall": 0.46153846153846156,
+        "f1": 0.4430769230769231,
+        "support": 156
+      },
+      "joy": {
+        "precision": 0.6160714285714286,
+        "recall": 0.3812154696132597,
+        "f1": 0.4709897610921502,
+        "support": 181
+      },
+      "sadness": {
+        "precision": 0.42592592592592593,
+        "recall": 0.5935483870967742,
+        "f1": 0.49595687331536387,
+        "support": 155
+      },
+      "surprise": {
+        "precision": 0.375,
+        "recall": 0.5535714285714286,
+        "f1": 0.44711538461538464,
+        "support": 168
+      },
+      "trust": {
+        "precision": 0.4810126582278481,
+        "recall": 0.21965317919075145,
+        "f1": 0.30158730158730157,
+        "support": 173
+      }
+    },
+    "n": 1016,
+    "label_order": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust"
+    ],
+    "zero_division": 0,
+    "sklearn_version": "1.9.1",
+    "malformed_rate": 0.08169291338582677,
+    "empty_list_rate": 0.07874015748031496,
+    "invalid_rate": 0.002952755905511811
+  },
+  "es": {
+    "micro_f1": 0.358933545563072,
+    "jaccard_samples": 0.2885826771653543,
+    "macro_f1": 0.33372290720867176,
+    "micro_precision": 0.4332372718539865,
+    "micro_recall": 0.3063858695652174,
+    "hamming_loss": 0.19820374015748032,
+    "exact_match": 0.1830708661417323,
+    "per_label": {
+      "anger": {
+        "precision": 0.6032608695652174,
+        "recall": 0.4065934065934066,
+        "f1": 0.48577680525164113,
+        "support": 273
+      },
+      "anticipation": {
+        "precision": 0.5681818181818182,
+        "recall": 0.10822510822510822,
+        "f1": 0.18181818181818182,
+        "support": 231
+      },
+      "disgust": {
+        "precision": 0.44594594594594594,
+        "recall": 0.24444444444444444,
+        "f1": 0.3157894736842105,
+        "support": 135
+      },
+      "fear": {
+        "precision": 0.31851851851851853,
+        "recall": 0.27564102564102566,
+        "f1": 0.29553264604810997,
+        "support": 156
+      },
+      "joy": {
+        "precision": 0.5545454545454546,
+        "recall": 0.3370165745856354,
+        "f1": 0.41924398625429554,
+        "support": 181
+      },
+      "sadness": {
+        "precision": 0.36160714285714285,
+        "recall": 0.5225806451612903,
+        "f1": 0.42744063324538256,
+        "support": 155
+      },
+      "surprise": {
+        "precision": 0.34297520661157027,
+        "recall": 0.49404761904761907,
+        "f1": 0.40487804878048783,
+        "support": 168
+      },
+      "trust": {
+        "precision": 0.5,
+        "recall": 0.08092485549132948,
+        "f1": 0.13930348258706468,
+        "support": 173
+      }
+    },
+    "n": 1016,
+    "label_order": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust"
+    ],
+    "zero_division": 0,
+    "sklearn_version": "1.9.1",
+    "malformed_rate": 0.17913385826771652,
+    "empty_list_rate": 0.17224409448818898,
+    "invalid_rate": 0.006889763779527559
+  }
+}
