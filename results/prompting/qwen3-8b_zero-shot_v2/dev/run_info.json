@@ -1,0 +1,45 @@
+{
+  "config": {
+    "experiment": "qwen3-8b_zero-shot_v2",
+    "model": {
+      "name": "Qwen/Qwen3-8B",
+      "revision": "main",
+      "dtype": "bfloat16"
+    },
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "prompt": {
+      "variant": "v2",
+      "n_shots": 0,
+      "demos_file": null
+    },
+    "languages": [
+      "en",
+      "es"
+    ],
+    "decoding": {
+      "do_sample": false,
+      "max_new_tokens": 64
+    },
+    "batch_size": 16,
+    "seed": 42
+  },
+  "config_file": "configs/prompting/qwen3-8b_zero-shot.yaml",
+  "split": "dev",
+  "limit": null,
+  "n_examples": 1016,
+  "demo_ids": [],
+  "model_commit": "b968826d9c46dd6066d109eabc6255188de91218",
+  "runtime_seconds": {
+    "en": 46.2,
+    "es": 45.1
+  },
+  "device": "NVIDIA A100-PCIE-40GB",
+  "versions": {
+    "python": "3.12.16",
+    "torch": "2.14.1+cu130",
+    "transformers": "5.20.2"
+  },
+  "timestamp": "2026-10-30 18:36:40"
+}

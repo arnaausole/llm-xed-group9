@@ -1,0 +1,152 @@
+{
+  "en": {
+    "micro_f1": 0.4722314599268374,
+    "jaccard_samples": 0.3926509186351706,
+    "macro_f1": 0.4617436790573446,
+    "micro_precision": 0.46254071661237783,
+    "micro_recall": 0.48233695652173914,
+    "hamming_loss": 0.1952509842519685,
+    "exact_match": 0.19488188976377951,
+    "per_label": {
+      "anger": {
+        "precision": 0.6224899598393574,
+        "recall": 0.5677655677655677,
+        "f1": 0.5938697318007663,
+        "support": 273
+      },
+      "anticipation": {
+        "precision": 0.4928571428571429,
+        "recall": 0.2987012987012987,
+        "f1": 0.3719676549865229,
+        "support": 231
+      },
+      "disgust": {
+        "precision": 0.42452830188679247,
+        "recall": 0.3333333333333333,
+        "f1": 0.37344398340248963,
+        "support": 135
+      },
+      "fear": {
+        "precision": 0.37142857142857144,
+        "recall": 0.5833333333333334,
+        "f1": 0.4538653366583541,
+        "support": 156
+      },
+      "joy": {
+        "precision": 0.6086956521739131,
+        "recall": 0.3867403314917127,
+        "f1": 0.47297297297297297,
+        "support": 181
+      },
+      "sadness": {
+        "precision": 0.4393305439330544,
+        "recall": 0.6774193548387096,
+        "f1": 0.5329949238578681,
+        "support": 155
+      },
+      "surprise": {
+        "precision": 0.3554006968641115,
+        "recall": 0.6071428571428571,
+        "f1": 0.44835164835164837,
+        "support": 168
+      },
+      "trust": {
+        "precision": 0.474025974025974,
+        "recall": 0.42196531791907516,
+        "f1": 0.44648318042813456,
+        "support": 173
+      }
+    },
+    "n": 1016,
+    "label_order": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust"
+    ],
+    "zero_division": 0,
+    "sklearn_version": "1.9.1",
+    "malformed_rate": 0.05610236220472441,
+    "empty_list_rate": 0.051181102362204724,
+    "invalid_rate": 0.004921259842519685
+  },
+  "es": {
+    "micro_f1": 0.37602382725241995,
+    "jaccard_samples": 0.2968832020997375,
+    "macro_f1": 0.3663697682928958,
+    "micro_precision": 0.4159802306425041,
+    "micro_recall": 0.343070652173913,
+    "hamming_loss": 0.2062007874015748,
+    "exact_match": 0.16535433070866143,
+    "per_label": {
+      "anger": {
+        "precision": 0.5804597701149425,
+        "recall": 0.36996336996337,
+        "f1": 0.4519015659955257,
+        "support": 273
+      },
+      "anticipation": {
+        "precision": 0.58,
+        "recall": 0.12554112554112554,
+        "f1": 0.20640569395017794,
+        "support": 231
+      },
+      "disgust": {
+        "precision": 0.44871794871794873,
+        "recall": 0.25925925925925924,
+        "f1": 0.3286384976525822,
+        "support": 135
+      },
+      "fear": {
+        "precision": 0.34054054054054056,
+        "recall": 0.40384615384615385,
+        "f1": 0.36950146627565983,
+        "support": 156
+      },
+      "joy": {
+        "precision": 0.5631067961165048,
+        "recall": 0.32044198895027626,
+        "f1": 0.4084507042253521,
+        "support": 181
+      },
+      "sadness": {
+        "precision": 0.33840304182509506,
+        "recall": 0.5741935483870968,
+        "f1": 0.4258373205741627,
+        "support": 155
+      },
+      "surprise": {
+        "precision": 0.30952380952380953,
+        "recall": 0.4642857142857143,
+        "f1": 0.37142857142857144,
+        "support": 168
+      },
+      "trust": {
+        "precision": 0.47706422018348627,
+        "recall": 0.30057803468208094,
+        "f1": 0.36879432624113473,
+        "support": 173
+      }
+    },
+    "n": 1016,
+    "label_order": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust"
+    ],
+    "zero_division": 0,
+    "sklearn_version": "1.9.1",
+    "malformed_rate": 0.16535433070866143,
+    "empty_list_rate": 0.15649606299212598,
+    "invalid_rate": 0.008858267716535433
+  }
+}

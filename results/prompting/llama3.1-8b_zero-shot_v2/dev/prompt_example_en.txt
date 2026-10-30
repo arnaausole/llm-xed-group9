@@ -1,0 +1,21 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+Task: multi-label emotion classification of a single movie subtitle line.
+Allowed labels:
+- anger: annoyance, rage, hostility
+- anticipation: expectation, interest, looking forward to or planning something
+- disgust: revulsion, contempt, strong disapproval
+- fear: worry, anxiety, terror
+- joy: happiness, pleasure, amusement
+- sadness: grief, disappointment, regret
+- surprise: astonishment, disbelief, reaction to something unexpected
+- trust: acceptance, admiration, reassurance, confidence in someone
+
+Every line expresses at least one of these emotions, even if subtle; never return an empty list.
+Return all labels that apply (one or more) as a JSON list of English label names, e.g. ["<label>", "<label>"]. Output only the JSON list.<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Subtitle: Go ahead, bet your sixes, buster.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+

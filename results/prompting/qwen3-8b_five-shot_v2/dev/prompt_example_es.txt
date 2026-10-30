@@ -1,0 +1,41 @@
+<|im_start|>system
+Task: multi-label emotion classification of a single movie subtitle line.
+Allowed labels:
+- anger: annoyance, rage, hostility
+- anticipation: expectation, interest, looking forward to or planning something
+- disgust: revulsion, contempt, strong disapproval
+- fear: worry, anxiety, terror
+- joy: happiness, pleasure, amusement
+- sadness: grief, disappointment, regret
+- surprise: astonishment, disbelief, reaction to something unexpected
+- trust: acceptance, admiration, reassurance, confidence in someone
+
+Every line expresses at least one of these emotions, even if subtle; never return an empty list.
+Return all labels that apply (one or more) as a JSON list of English label names, e.g. ["<label>", "<label>"]. Output only the JSON list.<|im_end|>
+<|im_start|>user
+Subtitle: El sendero de 10 millas no esta lejos de aquí.<|im_end|>
+<|im_start|>assistant
+["anger", "trust"]<|im_end|>
+<|im_start|>user
+Subtitle: Pero si le hablaras de esto, a cualquiera, traería consecuencias desastrozas.<|im_end|>
+<|im_start|>assistant
+["fear", "sadness"]<|im_end|>
+<|im_start|>user
+Subtitle: Ese tipo es una bestia.<|im_end|>
+<|im_start|>assistant
+["disgust", "surprise"]<|im_end|>
+<|im_start|>user
+Subtitle: Te va a encantar cómo cocina Adrian.<|im_end|>
+<|im_start|>assistant
+["anticipation", "joy"]<|im_end|>
+<|im_start|>user
+Subtitle: Nadie sabe qué sucede dentro de un patrullero, ¿no, Mike?<|im_end|>
+<|im_start|>assistant
+["disgust"]<|im_end|>
+<|im_start|>user
+Subtitle: Adelante, apuesta tus seis, viejo.<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+

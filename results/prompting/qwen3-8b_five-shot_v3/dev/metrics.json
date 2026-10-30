@@ -1,0 +1,152 @@
+{
+  "en": {
+    "micro_f1": 0.48236415633937085,
+    "jaccard_samples": 0.39696522309711285,
+    "macro_f1": 0.47676531068993633,
+    "micro_precision": 0.45313432835820894,
+    "micro_recall": 0.515625,
+    "hamming_loss": 0.20041830708661418,
+    "exact_match": 0.1781496062992126,
+    "per_label": {
+      "anger": {
+        "precision": 0.6759259259259259,
+        "recall": 0.5347985347985348,
+        "f1": 0.5971370143149284,
+        "support": 273
+      },
+      "anticipation": {
+        "precision": 0.575,
+        "recall": 0.39826839826839827,
+        "f1": 0.47058823529411764,
+        "support": 231
+      },
+      "disgust": {
+        "precision": 0.34782608695652173,
+        "recall": 0.4148148148148148,
+        "f1": 0.3783783783783784,
+        "support": 135
+      },
+      "fear": {
+        "precision": 0.4186046511627907,
+        "recall": 0.5769230769230769,
+        "f1": 0.48517520215633425,
+        "support": 156
+      },
+      "joy": {
+        "precision": 0.5546875,
+        "recall": 0.39226519337016574,
+        "f1": 0.459546925566343,
+        "support": 181
+      },
+      "sadness": {
+        "precision": 0.397212543554007,
+        "recall": 0.7354838709677419,
+        "f1": 0.5158371040723982,
+        "support": 155
+      },
+      "surprise": {
+        "precision": 0.3151862464183381,
+        "recall": 0.6547619047619048,
+        "f1": 0.425531914893617,
+        "support": 168
+      },
+      "trust": {
+        "precision": 0.5031446540880503,
+        "recall": 0.4624277456647399,
+        "f1": 0.4819277108433735,
+        "support": 173
+      }
+    },
+    "n": 1016,
+    "label_order": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust"
+    ],
+    "zero_division": 0,
+    "sklearn_version": "1.9.1",
+    "malformed_rate": 0.004921259842519685,
+    "empty_list_rate": 0.003937007874015748,
+    "invalid_rate": 0.000984251968503937
+  },
+  "es": {
+    "micro_f1": 0.42521227955584584,
+    "jaccard_samples": 0.3579232283464567,
+    "macro_f1": 0.4226477222614427,
+    "micro_precision": 0.40943396226415096,
+    "micro_recall": 0.4422554347826087,
+    "hamming_loss": 0.21653543307086615,
+    "exact_match": 0.17618110236220472,
+    "per_label": {
+      "anger": {
+        "precision": 0.603448275862069,
+        "recall": 0.38461538461538464,
+        "f1": 0.4697986577181208,
+        "support": 273
+      },
+      "anticipation": {
+        "precision": 0.5585585585585585,
+        "recall": 0.2683982683982684,
+        "f1": 0.36257309941520466,
+        "support": 231
+      },
+      "disgust": {
+        "precision": 0.3877551020408163,
+        "recall": 0.4222222222222222,
+        "f1": 0.40425531914893614,
+        "support": 135
+      },
+      "fear": {
+        "precision": 0.33771929824561403,
+        "recall": 0.4935897435897436,
+        "f1": 0.4010416666666667,
+        "support": 156
+      },
+      "joy": {
+        "precision": 0.5603448275862069,
+        "recall": 0.35911602209944754,
+        "f1": 0.4377104377104377,
+        "support": 181
+      },
+      "sadness": {
+        "precision": 0.34459459459459457,
+        "recall": 0.6580645161290323,
+        "f1": 0.4523281596452328,
+        "support": 155
+      },
+      "surprise": {
+        "precision": 0.3191489361702128,
+        "recall": 0.625,
+        "f1": 0.4225352112676056,
+        "support": 168
+      },
+      "trust": {
+        "precision": 0.4126984126984127,
+        "recall": 0.4508670520231214,
+        "f1": 0.430939226519337,
+        "support": 173
+      }
+    },
+    "n": 1016,
+    "label_order": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust"
+    ],
+    "zero_division": 0,
+    "sklearn_version": "1.9.1",
+    "malformed_rate": 0.003937007874015748,
+    "empty_list_rate": 0.001968503937007874,
+    "invalid_rate": 0.001968503937007874
+  }
+}

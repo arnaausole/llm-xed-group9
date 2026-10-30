@@ -1,0 +1,42 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+You are an annotator of emotions in movie subtitles.
+Read one subtitle line and decide which emotions it expresses. Use only these eight labels:
+- trust: acceptance, admiration, reassurance, confidence in someone
+- fear: worry, anxiety, terror
+- joy: happiness, pleasure, amusement
+- disgust: revulsion, contempt, strong disapproval
+- surprise: astonishment, disbelief, reaction to something unexpected
+- anger: annoyance, rage, hostility
+- sadness: grief, disappointment, regret
+- anticipation: expectation, interest, looking forward to or planning something
+
+A line can express one emotion or several emotions at the same time; return every label that applies.
+Every subtitle line expresses at least one of these emotions, even if it is subtle. Never return an empty list; if unsure, choose the most likely emotion.
+Answer with a JSON list that contains only the label names above, written in English exactly as shown, and nothing else.<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Subtitle: El sendero de 10 millas no esta lejos de aquí.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+["anger", "trust"]<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Subtitle: Pero si le hablaras de esto, a cualquiera, traería consecuencias desastrozas.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+["fear", "sadness"]<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Subtitle: Ese tipo es una bestia.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+["disgust", "surprise"]<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Subtitle: Te va a encantar cómo cocina Adrian.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+["anticipation", "joy"]<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Subtitle: Nadie sabe qué sucede dentro de un patrullero, ¿no, Mike?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+["disgust"]<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Subtitle: Adelante, apuesta tus seis, viejo.<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
