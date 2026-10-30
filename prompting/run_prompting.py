@@ -16,6 +16,8 @@ Usage::
     uv run python prompting/run_prompting.py --config configs/prompting/qwen3-8b_zero-shot.yaml
     # quick check on 50 dev lines
     uv run python prompting/run_prompting.py --config ... --limit 50
+    # prompt sensitivity: same config with another wording, saved as <experiment>_v2
+    uv run python prompting/run_prompting.py --config ... --variant v2
     # final evaluation, only once the prompt is frozen
     uv run python prompting/run_prompting.py --config ... --split test
 """
@@ -194,6 +196,11 @@ def main():
     ap.add_argument("--split", choices=["dev", "test"], default="dev")
     ap.add_argument("--limit", type=int, help="only the first N examples (smoke test)")
     ap.add_argument("--model", help="override the model name (smoke test only)")
+    ap.add_argument(
+        "--variant",
+        choices=["v1", "v2", "v3"],
+        help="override the prompt variant (prompt-sensitivity runs, dev only)",
+    )
     ap.add_argument("--data", type=Path, default=Path("data/processed"))
     ap.add_argument("--splits", type=Path, default=Path("splits"))
     ap.add_argument("--results", type=Path, default=Path("results/prompting"))
@@ -203,6 +210,11 @@ def main():
     if args.model:
         cfg["model"]["name"] = args.model
         cfg["experiment"] += "_override-" + args.model.replace("/", "_")
+    if args.variant and args.variant != cfg["prompt"]["variant"]:
+        if args.split == "test":
+            raise ValueError("Prompt variants are compared on dev only (brief §3)")
+        cfg["prompt"]["variant"] = args.variant
+        cfg["experiment"] += "_" + args.variant
     transformers.set_seed(cfg["seed"])
 
     records = load_split(args.data, args.splits, args.split)
