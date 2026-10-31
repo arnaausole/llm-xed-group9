@@ -3,7 +3,7 @@ experiment: qwen3-8b_zero-shot
 
 model:
   name: Qwen/Qwen3-8B
-  revision: main  # the resolved commit hash is saved in run_info.json
+  revision: b968826d9c46dd6066d109eabc6255188de91218  # pinned: commit used for all dev runs
   dtype: bfloat16  # use float16 on GPUs without bfloat16 support (e.g. V100)
 chat_template_kwargs:
   enable_thinking: false  # Qwen3 "thinking mode" off: answer directly

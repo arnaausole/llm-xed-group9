@@ -3,7 +3,7 @@ experiment: llama3.1-8b_five-shot
 
 model:
   name: meta-llama/Llama-3.1-8B-Instruct
-  revision: main  # the resolved commit hash is saved in run_info.json
+  revision: 0e9e39f249a16976918f6564b8830bc894c89659  # pinned: commit used for all dev runs
   dtype: bfloat16  # use float16 on GPUs without bfloat16 support (e.g. V100)
 chat_template_kwargs: {}
 
