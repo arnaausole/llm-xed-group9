@@ -1,0 +1,49 @@
+{
+  "config": {
+    "experiment": "llama3.1-8b_five-shot",
+    "model": {
+      "name": "meta-llama/Llama-3.1-8B-Instruct",
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "dtype": "bfloat16"
+    },
+    "chat_template_kwargs": {},
+    "prompt": {
+      "variant": "v1",
+      "n_shots": 5,
+      "demos_file": "splits/fewshot_ids.txt"
+    },
+    "languages": [
+      "en",
+      "es"
+    ],
+    "decoding": {
+      "do_sample": false,
+      "max_new_tokens": 64
+    },
+    "batch_size": 16,
+    "seed": 42
+  },
+  "config_file": "configs/prompting/llama3.1-8b_five-shot.yaml",
+  "split": "test",
+  "limit": null,
+  "n_examples": 508,
+  "demo_ids": [
+    "b93532ba1bcd",
+    "b1d4233be8c9",
+    "7abdfb7e49e0",
+    "65c8aa41ab84",
+    "a4c5bcb54ba0"
+  ],
+  "model_commit": "0e9e39f249a16976918f6564b8830bc894c89659",
+  "runtime_seconds": {
+    "en": 37.2,
+    "es": 31.6
+  },
+  "device": "NVIDIA A100-PCIE-40GB",
+  "versions": {
+    "python": "3.12.16",
+    "torch": "2.14.1+cu130",
+    "transformers": "5.20.2"
+  },
+  "timestamp": "2026-11-01 19:53:09"
+}

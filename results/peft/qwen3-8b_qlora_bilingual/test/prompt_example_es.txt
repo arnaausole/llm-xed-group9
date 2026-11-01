@@ -1,0 +1,22 @@
+<|im_start|>system
+You are an annotator of emotions in movie subtitles.
+Read one subtitle line and decide which emotions it expresses. Use only these eight labels:
+- anger: annoyance, rage, hostility
+- anticipation: expectation, interest, looking forward to or planning something
+- disgust: revulsion, contempt, strong disapproval
+- fear: worry, anxiety, terror
+- joy: happiness, pleasure, amusement
+- sadness: grief, disappointment, regret
+- surprise: astonishment, disbelief, reaction to something unexpected
+- trust: acceptance, admiration, reassurance, confidence in someone
+
+A line can express one emotion or several emotions at the same time; return every label that applies.
+Every subtitle line expresses at least one of these emotions, even if it is subtle. Never return an empty list; if unsure, choose the most likely emotion.
+Answer with a JSON list that contains only the label names above, written in English exactly as shown, and nothing else.<|im_end|>
+<|im_start|>user
+Subtitle: Bueno, eso acabó con esto.<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+

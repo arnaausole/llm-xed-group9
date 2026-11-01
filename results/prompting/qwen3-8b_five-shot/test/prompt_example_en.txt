@@ -1,0 +1,42 @@
+<|im_start|>system
+You are an annotator of emotions in movie subtitles.
+Read one subtitle line and decide which emotions it expresses. Use only these eight labels:
+- anger: annoyance, rage, hostility
+- anticipation: expectation, interest, looking forward to or planning something
+- disgust: revulsion, contempt, strong disapproval
+- fear: worry, anxiety, terror
+- joy: happiness, pleasure, amusement
+- sadness: grief, disappointment, regret
+- surprise: astonishment, disbelief, reaction to something unexpected
+- trust: acceptance, admiration, reassurance, confidence in someone
+
+A line can express one emotion or several emotions at the same time; return every label that applies.
+Every subtitle line expresses at least one of these emotions, even if it is subtle. Never return an empty list; if unsure, choose the most likely emotion.
+Answer with a JSON list that contains only the label names above, written in English exactly as shown, and nothing else.<|im_end|>
+<|im_start|>user
+Subtitle: Sister, "ten mile' refers to Ten Mile Pavilion<|im_end|>
+<|im_start|>assistant
+["anger", "trust"]<|im_end|>
+<|im_start|>user
+Subtitle: But to speak of this, to anyone, would bring dire consequences.<|im_end|>
+<|im_start|>assistant
+["fear", "sadness"]<|im_end|>
+<|im_start|>user
+Subtitle: The man is an animal.<|im_end|>
+<|im_start|>assistant
+["disgust", "surprise"]<|im_end|>
+<|im_start|>user
+Subtitle: You're really gonna like the way Adrian cooks.<|im_end|>
+<|im_start|>assistant
+["anticipation", "joy"]<|im_end|>
+<|im_start|>user
+Subtitle: Nobody knows what goes on inside a police car, right, Mike?<|im_end|>
+<|im_start|>assistant
+["disgust"]<|im_end|>
+<|im_start|>user
+Subtitle: Well, that broke that up.<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+

@@ -1,0 +1,508 @@
+{"align_id": "7e6d4649e859", "gold": ["anger", "fear"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "0e8034f10c65", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "a08f174f6081", "gold": ["disgust", "sadness", "surprise"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "368976f0205e", "gold": ["surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "5bc5fa5dcd4f", "gold": ["anger", "fear"], "raw_output": "[\"surprise\", \"anger\"]", "pred": ["anger", "surprise"], "status": "ok"}
+{"align_id": "15d2bfba34ec", "gold": ["trust"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "0d7f407a5588", "gold": ["anticipation", "surprise"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "2b0d59324e7f", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "a349751cd08e", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "96a0a1fd0b76", "gold": ["disgust"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "e357496161cd", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "1ac4aefda7f1", "gold": ["anger"], "raw_output": "[\"surprise\", \"anger\"]", "pred": ["anger", "surprise"], "status": "ok"}
+{"align_id": "21b7e643b760", "gold": ["anticipation", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "392dd1e59401", "gold": ["surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "26bf44c6fd29", "gold": ["anticipation", "joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "b4f59819a85a", "gold": ["anticipation"], "raw_output": "[\"surprise\", \"joy\"]", "pred": ["joy", "surprise"], "status": "ok"}
+{"align_id": "aa1fd8632014", "gold": ["joy"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "0fc1a9923442", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "49a01bb12d53", "gold": ["anticipation", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "d304f39400f1", "gold": ["anticipation", "fear", "joy", "sadness", "surprise", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "595a1a1fe3d5", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "5707b48f25c3", "gold": ["anger"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "60b9375bfb6f", "gold": ["anticipation", "joy", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "9e52ac15e263", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "127476a9671f", "gold": ["fear"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "3325ec80a432", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "68b9e186547e", "gold": ["anger", "trust"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "3922e5e140bc", "gold": ["fear", "trust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "36b09fe3b536", "gold": ["anger", "surprise"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "c4d73e8ef9a5", "gold": ["fear"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "cacdfafb6002", "gold": ["anticipation", "surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "71c9b0b08821", "gold": ["anticipation", "sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "d769b2fccf30", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "cbf66129353b", "gold": ["surprise"], "raw_output": "[\"anticipation\", \"fear\"]", "pred": ["anticipation", "fear"], "status": "ok"}
+{"align_id": "9600a75721c0", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "0c35f1563818", "gold": ["fear"], "raw_output": "[\"anger\", \"sadness\"]", "pred": ["anger", "sadness"], "status": "ok"}
+{"align_id": "c127aa09f1cf", "gold": ["joy"], "raw_output": "[\"hope\", \"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "61d660adef5d", "gold": ["surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "ad66c410ae86", "gold": ["fear"], "raw_output": "[\"warning\", \"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "7d9198e7f9b4", "gold": ["anticipation", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "43424b5c4c20", "gold": ["fear"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "199897e796ce", "gold": ["anger", "fear", "surprise"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "242e4050dff9", "gold": ["surprise"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "87ed92d2ebad", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "05a8477d6750", "gold": ["disgust"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "ec5d3f0cac78", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "cfd00d8d76b9", "gold": ["sadness", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "0d65a6180ae4", "gold": ["anticipation", "joy"], "raw_output": "[\"joy\", \"trust\"]", "pred": ["joy", "trust"], "status": "ok"}
+{"align_id": "7d34b629b080", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "2c9b5edf7c0e", "gold": ["anticipation", "joy"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "a01a7f343bd1", "gold": ["anticipation", "fear", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "0fdce8d28ccb", "gold": ["sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "2f7359e3e76e", "gold": ["disgust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "aa8f6c71a3bb", "gold": ["anger", "anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "f8ed8c90ad77", "gold": ["joy"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "b06aeda061cb", "gold": ["sadness"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "56f404248e69", "gold": ["anticipation"], "raw_output": "[\"sadness\", \"surprise\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "3886676b6193", "gold": ["sadness"], "raw_output": "[\"sadness\", \"trust\"]", "pred": ["sadness", "trust"], "status": "ok"}
+{"align_id": "85f393049e5d", "gold": ["anger"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "d9d04703077a", "gold": ["anger"], "raw_output": "[\"surprise\", \"anger\"]", "pred": ["anger", "surprise"], "status": "ok"}
+{"align_id": "f32695e94607", "gold": ["anger", "sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "80071daad570", "gold": ["fear"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "a30e70532dce", "gold": ["sadness"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "9b1a0cab1462", "gold": ["disgust", "sadness"], "raw_output": "[\"sadness\", \"anger\"]", "pred": ["anger", "sadness"], "status": "ok"}
+{"align_id": "622d91e29072", "gold": ["trust"], "raw_output": "[\"joy\", \"trust\"]", "pred": ["joy", "trust"], "status": "ok"}
+{"align_id": "976ba8412416", "gold": ["disgust"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "729d6794f444", "gold": ["fear"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "cfbf40aef09a", "gold": ["disgust", "surprise"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "a7db55b6d021", "gold": ["disgust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "52d9edb0e801", "gold": ["joy"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "4e9c9e6c8573", "gold": ["joy"], "raw_output": "[\"disgust\"]", "pred": ["disgust"], "status": "ok"}
+{"align_id": "6f98247204fd", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "7c9f74c8a406", "gold": ["anger"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "c64fb5c3ad0a", "gold": ["disgust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "913124feabd6", "gold": ["sadness", "surprise"], "raw_output": "[\"surprise\", \"joy\"]", "pred": ["joy", "surprise"], "status": "ok"}
+{"align_id": "414a335563ce", "gold": ["surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "8b10a4913bf7", "gold": ["disgust", "surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "e9b3f9c7c8e3", "gold": ["disgust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "b9baafdd543f", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "43b74cccb43f", "gold": ["anger", "sadness"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "26dc5c834024", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "2bc044f50ce8", "gold": ["anger", "disgust"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "b4bef21d14df", "gold": ["fear"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "502ae8f3e279", "gold": ["anticipation", "fear"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "bf4c9082d77d", "gold": ["fear"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "f51f2c49a3b5", "gold": ["anger", "disgust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "8125250860fe", "gold": ["disgust"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "71e0de1bc4b2", "gold": ["anger"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "d02c50b4976b", "gold": ["joy"], "raw_output": "[\"joy\", \"anticipation\"]", "pred": ["anticipation", "joy"], "status": "ok"}
+{"align_id": "fff03b4d2ebc", "gold": ["anticipation"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "6986e9bbe629", "gold": ["disgust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "dbe9cff38b1d", "gold": ["anticipation", "joy"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "d841116b0498", "gold": ["fear"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "53df21cfe260", "gold": ["trust"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "010e7f32c110", "gold": ["anticipation"], "raw_output": "[\"surprise\", \"anticipation\"]", "pred": ["anticipation", "surprise"], "status": "ok"}
+{"align_id": "82824ae70f27", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "b66f4b48a3db", "gold": ["anticipation", "joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "3c2e49653dc3", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "21a037077dfa", "gold": ["anticipation"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "a6a2c934fa4e", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "c0594bcf188f", "gold": ["fear"], "raw_output": "[\"sadness\", \"fear\"]", "pred": ["fear", "sadness"], "status": "ok"}
+{"align_id": "6a672cbb393b", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "9fa3e8341ea0", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "dc03334abe51", "gold": ["fear", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "52d23c708a09", "gold": ["disgust"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "a7ed4472b59b", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "8974e9521d5c", "gold": ["anticipation", "fear"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "6ba3cbee1b8f", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "9fbacc6c027c", "gold": ["disgust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "b8ab51c5d1db", "gold": ["anger", "fear"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "59530da1b7ca", "gold": ["trust"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "bf693322ca42", "gold": ["anticipation", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "aac7d666c852", "gold": ["anger", "disgust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "56da546aa86d", "gold": ["anticipation"], "raw_output": "[\"sadness\", \"anger\"]", "pred": ["anger", "sadness"], "status": "ok"}
+{"align_id": "6f3ac8de962d", "gold": ["fear"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "aae3306d80d0", "gold": ["anger", "disgust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "c4c420f62644", "gold": ["joy", "trust"], "raw_output": "[\"anger\", \"disgust\"]", "pred": ["anger", "disgust"], "status": "ok"}
+{"align_id": "d1c4e0226590", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "e63d233e07ab", "gold": ["anticipation"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "e3f641c41ac2", "gold": ["trust"], "raw_output": "[\"disgust\"]", "pred": ["disgust"], "status": "ok"}
+{"align_id": "9616c8a2bbc6", "gold": ["anticipation", "trust"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "1992a9e8edd6", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "393ad8d3f23b", "gold": ["anger"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "f451ea241985", "gold": ["anger", "sadness"], "raw_output": "[\"disgust\"]", "pred": ["disgust"], "status": "ok"}
+{"align_id": "1864c27b577a", "gold": ["surprise"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "3a27d5398d46", "gold": ["joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "a84f7a99f39d", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "ed44cd55ac8a", "gold": ["disgust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "71d2ae510fc6", "gold": ["disgust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "18bff713e201", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "5584ead77305", "gold": ["anger"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "66d631edb922", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "074d4d8a0b67", "gold": ["joy"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "19a94c151c02", "gold": ["surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "04793d39bf33", "gold": ["anticipation"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "3682796983cc", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "4acf06160f6e", "gold": ["fear"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "211a46e036e4", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "15782048e43e", "gold": ["fear"], "raw_output": "[\"sadness\", \"disgust\"]", "pred": ["disgust", "sadness"], "status": "ok"}
+{"align_id": "ae2b08518294", "gold": ["anger", "disgust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "46136d5cd887", "gold": ["anger", "joy", "trust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "fdb5931c14e3", "gold": ["joy", "sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "9531411bdafb", "gold": ["anticipation", "joy"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "eff4a565eb6a", "gold": ["anticipation"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "79ede7dc0453", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "a7a51ea37d73", "gold": ["anger"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "e4afca83bde7", "gold": ["trust"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "8df8aab0009c", "gold": ["surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "a28bd147ae67", "gold": ["anger", "fear", "surprise"], "raw_output": "[\"disgust\"]", "pred": ["disgust"], "status": "ok"}
+{"align_id": "eeb7c48e2f9e", "gold": ["sadness"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "ff1eaf2924ae", "gold": ["trust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "82912377fc99", "gold": ["anticipation", "surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "c1f43c6f49c6", "gold": ["trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "0c8d04452ea5", "gold": ["anger", "sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "b2a3035bd317", "gold": ["anticipation", "surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "29f18a647107", "gold": ["anger"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "b00e704464d4", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "4fc5cb216a54", "gold": ["fear"], "raw_output": "[\"sadness\", \"fear\"]", "pred": ["fear", "sadness"], "status": "ok"}
+{"align_id": "056831eb52a9", "gold": ["anger", "disgust", "fear", "sadness"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "473d4fe90163", "gold": ["disgust", "fear"], "raw_output": "[\"anger\", \"fear\"]", "pred": ["anger", "fear"], "status": "ok"}
+{"align_id": "5ce9491d1563", "gold": ["anger", "anticipation", "fear", "surprise", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "988226efe291", "gold": ["anger"], "raw_output": "[\"sadness\", \"apology\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "1b5a1fd9e8d4", "gold": ["fear", "trust"], "raw_output": "[\"sadness\", \"anticipation\"]", "pred": ["anticipation", "sadness"], "status": "ok"}
+{"align_id": "7e71ca86b43d", "gold": ["disgust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "31d10a4a9961", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "a2fb35e75c19", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "bc30489f7872", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "c22ed073b81c", "gold": ["anger"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "1d539a25a13e", "gold": ["surprise"], "raw_output": "[\"disgust\"]", "pred": ["disgust"], "status": "ok"}
+{"align_id": "1f226f3831b4", "gold": ["anger", "disgust"], "raw_output": "[\"anger\", \"disgust\"]", "pred": ["anger", "disgust"], "status": "ok"}
+{"align_id": "2072d68fa56e", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "8fcdd6e13855", "gold": ["anger", "disgust"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "a597f75b5a94", "gold": ["anger", "fear"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "1d18c6da0165", "gold": ["trust"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "7be695d09b5b", "gold": ["anticipation"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "4898c7a04b16", "gold": ["trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "0b9eb1e722b7", "gold": ["anger"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "9441b4f285f6", "gold": ["sadness", "surprise"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "d302917e0a4d", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "bf6183a9bdaf", "gold": ["anticipation"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "60740542a05d", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "0bd722512382", "gold": ["joy"], "raw_output": "[\"joy\", \"surprise\"]", "pred": ["joy", "surprise"], "status": "ok"}
+{"align_id": "4457af214b76", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "81af583c4220", "gold": ["anticipation", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "4f5cf17f967e", "gold": ["sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "0aed12bfa2fa", "gold": ["fear", "trust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "9277fb1be3ed", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "94161369eb68", "gold": ["anticipation", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "64bcdf8f6e51", "gold": ["joy", "trust"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "fa3a600f3df0", "gold": ["trust"], "raw_output": "[\"surprise\", \"anticipation\"]", "pred": ["anticipation", "surprise"], "status": "ok"}
+{"align_id": "f2f0ea3ba602", "gold": ["anticipation", "joy", "trust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "a51989ca3fbb", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "ce000824e069", "gold": ["surprise"], "raw_output": "[\"anticipation\", \"joy\"]", "pred": ["anticipation", "joy"], "status": "ok"}
+{"align_id": "42cd57f6413a", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "e5da6157cd78", "gold": ["anticipation", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "35d9ff89b390", "gold": ["anticipation", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "6ba89cf628e3", "gold": ["anticipation", "fear"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "8d12e04cee96", "gold": ["disgust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "2f95e7628850", "gold": ["joy", "surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "71da69aac154", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "5c31e7d9af95", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "1522b7785e88", "gold": ["sadness"], "raw_output": "[\"sadness\", \"joy\"]", "pred": ["joy", "sadness"], "status": "ok"}
+{"align_id": "b81cb038e56c", "gold": ["sadness"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "9e17766f9139", "gold": ["sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "dc4262bd598e", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "118caa41393b", "gold": ["sadness"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "461dbdaa76b2", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "0cc7bce9bfde", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "44428d5f7f47", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "8a0ff299ffb0", "gold": ["anticipation", "joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "a3bcdc4dd933", "gold": ["anger"], "raw_output": "[\"surprise\", \"joy\"]", "pred": ["joy", "surprise"], "status": "ok"}
+{"align_id": "daa314dc6b78", "gold": ["trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "4f964b87cdb1", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "0a442924a146", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "c5adad2a88cf", "gold": ["anticipation"], "raw_output": "[\"joy\", \"anticipation\"]", "pred": ["anticipation", "joy"], "status": "ok"}
+{"align_id": "ce6b50109337", "gold": ["anger"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "7f4a7c01a8a3", "gold": ["sadness", "surprise"], "raw_output": "[\"sadness\", \"fear\"]", "pred": ["fear", "sadness"], "status": "ok"}
+{"align_id": "33db79478d5c", "gold": ["joy", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "acd2df226d27", "gold": ["joy", "trust"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "8097a58c002b", "gold": ["fear"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "cc894eab2403", "gold": ["anticipation", "joy"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "5b36a737a2c8", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "b4a10b412a54", "gold": ["anger"], "raw_output": "[\"joy\", \"surprise\"]", "pred": ["joy", "surprise"], "status": "ok"}
+{"align_id": "844415053383", "gold": ["anger"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "3932b98c0bdf", "gold": ["fear"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "ade1677bec16", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "96a764e3c517", "gold": ["anger"], "raw_output": "[\"surprise\", \"joy\"]", "pred": ["joy", "surprise"], "status": "ok"}
+{"align_id": "a3e374a99e45", "gold": ["anger"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "39409efa607c", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "f51ffac831ae", "gold": ["joy"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "6cb804aa3665", "gold": ["joy"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "84cc98217caf", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "ce4ef2102a3c", "gold": ["joy"], "raw_output": "[\"sadness\", \"fear\"]", "pred": ["fear", "sadness"], "status": "ok"}
+{"align_id": "8801bf343260", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "1a7887da5823", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "d7dc98a264fa", "gold": ["joy"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "2ce509e1a243", "gold": ["surprise"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "b4966f837af9", "gold": ["sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "d8e2d8de4081", "gold": ["anticipation"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "b682973f2776", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "4a2c231c129e", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "fd9c9a605bac", "gold": ["fear", "surprise", "trust"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "cbab381dacb5", "gold": ["fear"], "raw_output": "[\"surprise\", \"confusion\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "640559a6e84f", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "6aa253144582", "gold": ["joy"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "507048a59351", "gold": ["anger", "anticipation", "fear"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "518fad50d769", "gold": ["anger"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "ae28fe8a1dc1", "gold": ["anticipation"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "cb1b59042447", "gold": ["anticipation"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "d4ecd1a15932", "gold": ["surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "c4e3dec7c5ef", "gold": ["surprise"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "5e677375fa8f", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "5264d8bcfdd7", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "4fa947fcf1c2", "gold": ["fear"], "raw_output": "[\"surprise\", \"confusion\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "88486c3f4c91", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "8a7e93a23970", "gold": ["anticipation", "joy"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "e7f1edf30125", "gold": ["anger"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "e63dc359545e", "gold": ["disgust", "sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "5fadb7bf09a6", "gold": ["anticipation"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "74518d295fda", "gold": ["anger"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "026847c7b3d3", "gold": ["joy"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "093ae4bbde61", "gold": ["anger", "fear"], "raw_output": "[\"fear\", \"disgust\"]", "pred": ["disgust", "fear"], "status": "ok"}
+{"align_id": "df6f14df4e7d", "gold": ["joy", "trust"], "raw_output": "[\"sadness\", \"trust\"]", "pred": ["sadness", "trust"], "status": "ok"}
+{"align_id": "bea60e4e6a27", "gold": ["sadness", "surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "d2462f4acd58", "gold": ["joy", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "a2a66fe2af65", "gold": ["surprise"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "a5d61733999b", "gold": ["anticipation", "fear", "joy", "sadness", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "98056538b699", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "4891b7a48edb", "gold": ["anticipation", "joy"], "raw_output": "[\"fear\", \"sadness\"]", "pred": ["fear", "sadness"], "status": "ok"}
+{"align_id": "bb32562e03b7", "gold": ["anger"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "0f27a14cd6ff", "gold": ["anticipation"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "858813301c4b", "gold": ["anger"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "b126923a7c72", "gold": ["joy"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "33b80f1e52f0", "gold": ["anger", "fear"], "raw_output": "[\"fear\", \"disgust\"]", "pred": ["disgust", "fear"], "status": "ok"}
+{"align_id": "c11ee14b5a3d", "gold": ["joy", "trust"], "raw_output": "[\"joy\", \"trust\"]", "pred": ["joy", "trust"], "status": "ok"}
+{"align_id": "b16a0d5263db", "gold": ["sadness", "surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "1d0a7e27dc51", "gold": ["joy", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "d0c055c5293e", "gold": ["surprise"], "raw_output": "[\"surprise\", \"anticipation\"]", "pred": ["anticipation", "surprise"], "status": "ok"}
+{"align_id": "84bf90287ed8", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "e353950bf468", "gold": ["disgust", "sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "37a5a923e6a5", "gold": ["surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "7abd1e640f21", "gold": ["surprise"], "raw_output": "[\"surprise\", \"anticipation\"]", "pred": ["anticipation", "surprise"], "status": "ok"}
+{"align_id": "04f53cca4e8b", "gold": ["trust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "997023b87d1b", "gold": ["fear"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "72b8798052dc", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "b5959480a14b", "gold": ["anger", "trust"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "3cb8b03efc67", "gold": ["fear", "trust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "079f6814f3fe", "gold": ["anger", "surprise"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "b428cf593ed3", "gold": ["fear"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "1c7412bd4609", "gold": ["anticipation", "surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "ddbfb51985ca", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "ad4f3d7ec74b", "gold": ["surprise"], "raw_output": "[\"anticipation\", \"fear\"]", "pred": ["anticipation", "fear"], "status": "ok"}
+{"align_id": "9547a570ec55", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "b75ba9307806", "gold": ["sadness"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "0b3ed450ab5f", "gold": ["anger", "sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "92a95de494c4", "gold": ["disgust"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "3cae36fcc59d", "gold": ["disgust", "surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "8a4a08aa01a4", "gold": ["joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "26a1e9aac0b5", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "a48bfdae7f69", "gold": ["anger", "disgust", "fear", "sadness"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "dd191a2bb17c", "gold": ["trust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "89dee469f196", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "f67de535df2f", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "b337caca6450", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "2f5dbfe7a5bc", "gold": ["joy", "surprise", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "092c9dd7e13b", "gold": ["anger"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "6fcefc60ffaa", "gold": ["joy"], "raw_output": "[\"anger\", \"sadness\"]", "pred": ["anger", "sadness"], "status": "ok"}
+{"align_id": "e9c2e5b5c834", "gold": ["sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "60b906f4b039", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "141db097bc38", "gold": ["anticipation"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "d92c450163da", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "1541bfc43442", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "e69f7477f787", "gold": ["anger", "disgust", "fear", "sadness"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "86b4d5429a81", "gold": ["joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "7694f8f85ff6", "gold": ["anger"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "f7ed63862ea5", "gold": ["anger", "surprise"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "4aaf8d627b07", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "0144ac161060", "gold": ["anger"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "e8239dce2ce5", "gold": ["anger"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "7d5b92b2f228", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "b39d92cc2235", "gold": ["joy", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "b34a6a6de021", "gold": ["anger", "fear", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "e734e7d5959c", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "bf68f8efc36d", "gold": ["anticipation", "surprise"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "721e166e2f73", "gold": ["trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "e389fc955bcd", "gold": ["sadness"], "raw_output": "[\"fear\", \"sadness\"]", "pred": ["fear", "sadness"], "status": "ok"}
+{"align_id": "71598d764269", "gold": ["sadness", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "799b166334f2", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "913041ac3ceb", "gold": ["sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "224700f8d398", "gold": ["joy", "surprise"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "6759a5a04bdc", "gold": ["anticipation", "joy", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "3bbf5ae6aa03", "gold": ["anger", "surprise"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "65a86499fa47", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "95badc30772a", "gold": ["anger", "anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "9a8bbd35147a", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "24c7958fda7e", "gold": ["fear", "sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "68b46e57c7be", "gold": ["anger", "disgust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "587858c38c53", "gold": ["joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "77f362a50dcd", "gold": ["anticipation", "disgust", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "ab2396d8029e", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "e259b6c1143b", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "4ee8023c5bff", "gold": ["anticipation", "joy"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "b2b60b3dc1fb", "gold": ["anger", "fear"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "2dcaf4146f1e", "gold": ["anticipation", "joy"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "56d5f40618f4", "gold": ["sadness", "surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "498c003bcf43", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "8fa3e6ec1923", "gold": ["surprise"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "350d00ce2af4", "gold": ["surprise"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "4900cb86d22d", "gold": ["surprise"], "raw_output": "[\"trust\", \"joy\"]", "pred": ["joy", "trust"], "status": "ok"}
+{"align_id": "e5913e55d87c", "gold": ["joy", "surprise"], "raw_output": "[\"joy\", \"anticipation\"]", "pred": ["anticipation", "joy"], "status": "ok"}
+{"align_id": "d83474925747", "gold": ["disgust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "69f6eda6551b", "gold": ["joy", "surprise"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "43641109653f", "gold": ["joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "3b171caf133f", "gold": ["anger", "fear"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "fd4b226ae11e", "gold": ["joy", "surprise"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "45d2e4ae7c1c", "gold": ["disgust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "765452254194", "gold": ["joy", "trust"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "d19aa0921fd0", "gold": ["sadness"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "36f85601446a", "gold": ["anger", "disgust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "eeac7f7c6333", "gold": ["anticipation", "joy"], "raw_output": "[\"joy\", \"trust\"]", "pred": ["joy", "trust"], "status": "ok"}
+{"align_id": "b7eb77b76f6a", "gold": ["fear"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "e16775d6418f", "gold": ["sadness", "surprise"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "c6b3453ae408", "gold": ["anticipation", "fear"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "c3cf51713911", "gold": ["anger", "disgust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "ffb1afdd5aa5", "gold": ["disgust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "af771b1eb49b", "gold": ["anticipation"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "0335e9e12b30", "gold": ["disgust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "4a3dfa26bf01", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "4c92be0b4748", "gold": ["anticipation", "joy"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "449b8b6c7e75", "gold": ["anger"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "3b8fecf87a5b", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "f7ad25f9313c", "gold": ["surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "95a85d8708ef", "gold": ["sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "dd2099051c87", "gold": ["disgust"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "ed6ec4282abb", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "85cc4b518b9b", "gold": ["surprise"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "b526f234f8e0", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "18900481fe6e", "gold": ["anger", "anticipation"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "f358a6157568", "gold": ["fear"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "8c69e19003d3", "gold": ["fear"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "21f0828a749d", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "e46a5edf11ac", "gold": ["trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "cf9666b75b55", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "1c2352ef2be7", "gold": ["disgust"], "raw_output": "[\"anger\", \"disgust\"]", "pred": ["anger", "disgust"], "status": "ok"}
+{"align_id": "0bef9c596416", "gold": ["disgust", "sadness"], "raw_output": "[\"sadness\", \"anger\"]", "pred": ["anger", "sadness"], "status": "ok"}
+{"align_id": "ee768b332c82", "gold": ["anger"], "raw_output": "[\"anger\", \"sadness\"]", "pred": ["anger", "sadness"], "status": "ok"}
+{"align_id": "3917e755e6db", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "7e9dc653e44d", "gold": ["joy"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "3c8035164d6b", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "9b27c5b142c2", "gold": ["anger"], "raw_output": "[\"fear\", \"sadness\"]", "pred": ["fear", "sadness"], "status": "ok"}
+{"align_id": "1f9443675824", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "b1ea3099d5d5", "gold": ["anger", "fear", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "e38f3c1e6047", "gold": ["anticipation"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "7225337cea67", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "56e061cc029a", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "185848e3786f", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "123b7640f0ec", "gold": ["surprise"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "f355ae1e8d66", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "9af4c1106d32", "gold": ["disgust"], "raw_output": "[\"anger\", \"disgust\"]", "pred": ["anger", "disgust"], "status": "ok"}
+{"align_id": "e23955f965d5", "gold": ["disgust", "sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "048b7fbd8f77", "gold": ["anger"], "raw_output": "[\"anger\", \"sadness\"]", "pred": ["anger", "sadness"], "status": "ok"}
+{"align_id": "af691bab1ae5", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "a9e04d344036", "gold": ["anticipation"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "87aa02d949bc", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "a98388bd691e", "gold": ["anger", "fear", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "900c7f52b4c8", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "7c7cddbf2af2", "gold": ["anger", "fear"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "7f3ebd08fb74", "gold": ["surprise"], "raw_output": "[\"surprise\", \"anticipation\"]", "pred": ["anticipation", "surprise"], "status": "ok"}
+{"align_id": "944244ab5f17", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "0e601d66cfd5", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "df59e64620a5", "gold": ["fear"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "f4d61e5410a7", "gold": ["fear"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "f795450370ef", "gold": ["anger", "disgust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "4bc953a2d498", "gold": ["surprise"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "06ce8f93b9e8", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "9decf9af2b6c", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "2172df1b63e2", "gold": ["anger", "disgust", "surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "e53e24aef6ec", "gold": ["anticipation", "surprise"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "4a65ac66d875", "gold": ["anger"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "92e3cada4f8d", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "58c8d0e311fc", "gold": ["anger", "disgust"], "raw_output": "[\"sadness\", \"anger\"]", "pred": ["anger", "sadness"], "status": "ok"}
+{"align_id": "9d9f79a145ba", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "c4c9ea858a4d", "gold": ["anger", "joy", "trust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "5f09356aae4d", "gold": ["anticipation"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "1f36f51ed548", "gold": ["sadness"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "6808bd177ee5", "gold": ["trust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "d8245d2df3a6", "gold": ["trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "96c8efbeb449", "gold": ["anger"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "947088d37f75", "gold": ["surprise"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "9e8c94541633", "gold": ["fear"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "52bd62fd50fa", "gold": ["anger", "disgust", "fear", "sadness"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "bacfc6917e46", "gold": ["fear", "sadness"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "e6371cff16ed", "gold": ["anticipation"], "raw_output": "[\"surprise\", \"disgust\"]", "pred": ["disgust", "surprise"], "status": "ok"}
+{"align_id": "470012a542f3", "gold": ["anticipation", "disgust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "6992013f9e38", "gold": ["surprise"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "112bc03f4049", "gold": ["anger", "disgust"], "raw_output": "[\"disgust\"]", "pred": ["disgust"], "status": "ok"}
+{"align_id": "588cc04f3ad9", "gold": ["anticipation"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "d37e271213ec", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "6bc91951fa08", "gold": ["anger"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "db93e5ca8e7f", "gold": ["anger", "anticipation"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "a59a33f9dbfe", "gold": ["joy", "trust"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "28b5f6405784", "gold": ["anticipation", "joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "d9eb9b602e2a", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "b7209e5bf2d6", "gold": ["anticipation"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "0557d0a19d3d", "gold": ["fear"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "cc21bd653e1e", "gold": ["anger"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "b008c7623284", "gold": ["disgust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "69ce07f9f48a", "gold": ["anger", "sadness"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "7fa17ae976ff", "gold": ["fear"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "443e5e037114", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "65afe0329466", "gold": ["joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "0b91f9dd0430", "gold": ["sadness", "trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "7631a67173ae", "gold": ["joy", "surprise"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "fc27182a065d", "gold": ["anticipation", "joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "b1e105dd19cf", "gold": ["trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "6f1e01e68fe3", "gold": ["anger", "anticipation", "joy", "trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "1ffe071af677", "gold": ["anger"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "649358e02369", "gold": ["anticipation"], "raw_output": "[\"anticipation\", \"joy\"]", "pred": ["anticipation", "joy"], "status": "ok"}
+{"align_id": "50ddcae5452b", "gold": ["anger"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "073ad3623c91", "gold": ["trust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "99c4d7c8deae", "gold": ["surprise"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "d0568306e613", "gold": ["anticipation", "surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "fe3f722f9aa5", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "3265a824bf73", "gold": ["anger", "disgust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "aa10e93d3b1f", "gold": ["anger", "disgust"], "raw_output": "[\"anticipation\", \"joy\"]", "pred": ["anticipation", "joy"], "status": "ok"}
+{"align_id": "15aacc93684f", "gold": ["joy", "surprise", "trust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "40b2d9c76885", "gold": ["anger"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "33c50c81dc07", "gold": ["anger", "disgust", "surprise"], "raw_output": "[\"sadness\", \"anger\"]", "pred": ["anger", "sadness"], "status": "ok"}
+{"align_id": "38347a87d408", "gold": ["anger"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "4c8cb346ef63", "gold": ["disgust"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "edd1316b2ef4", "gold": ["disgust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "d3d008addfca", "gold": ["anger"], "raw_output": "[\"trust\"]", "pred": ["trust"], "status": "ok"}
+{"align_id": "48a09a7de2a6", "gold": ["anticipation", "trust"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "f9996346ffce", "gold": ["anger"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "568d3255f626", "gold": ["anger"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "3c86eaa02fc2", "gold": ["anger", "anticipation", "disgust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "66c1be38a318", "gold": ["trust"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "85c722679dc4", "gold": ["anger"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "b60a0316b3a1", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "5c3a68b7d00c", "gold": ["anticipation", "fear"], "raw_output": "[\"fear\"]", "pred": ["fear"], "status": "ok"}
+{"align_id": "880caf7b22b1", "gold": ["trust"], "raw_output": "[\"anticipation\"]", "pred": ["anticipation"], "status": "ok"}
+{"align_id": "457dee85ad60", "gold": ["joy", "surprise"], "raw_output": "[\"surprise\", \"joy\"]", "pred": ["joy", "surprise"], "status": "ok"}
+{"align_id": "0fe8be6e9163", "gold": ["anticipation", "surprise"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "bbf454e61b46", "gold": ["anticipation"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "75cdb9eb7883", "gold": ["sadness"], "raw_output": "[\"sadness\", \"gratitude\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "3420ad63bf81", "gold": ["surprise"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "5b006dc09eeb", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "717cb95a8b21", "gold": ["sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "95031332f1b7", "gold": ["sadness"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "771afbe86036", "gold": ["joy"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "1406cb2d4f02", "gold": ["sadness"], "raw_output": "[\"surprise\", \"sadness\"]", "pred": ["sadness", "surprise"], "status": "ok"}
+{"align_id": "3d88e9f4ff32", "gold": ["sadness"], "raw_output": "[\"surprise\"]", "pred": ["surprise"], "status": "ok"}
+{"align_id": "6706df064fef", "gold": ["fear", "sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "056ba0bf0943", "gold": ["fear"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "097754e657cd", "gold": ["anger", "disgust", "fear"], "raw_output": "[\"fear\", \"sadness\"]", "pred": ["fear", "sadness"], "status": "ok"}
+{"align_id": "e799cb8f81d6", "gold": ["anger"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "f61a969f9696", "gold": ["joy"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "d6f040ffb538", "gold": ["anger", "disgust", "fear"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "1f4098a77f53", "gold": ["sadness"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "279e3e2c67cb", "gold": ["trust"], "raw_output": "[\"joy\"]", "pred": ["joy"], "status": "ok"}
+{"align_id": "f6d75ec60a8d", "gold": ["fear", "sadness"], "raw_output": "[\"sadness\"]", "pred": ["sadness"], "status": "ok"}
+{"align_id": "d7ad8237fe39", "gold": ["anticipation", "joy"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "89ebd07e5c8c", "gold": ["fear", "sadness"], "raw_output": "[\"surprise\", \"anticipation\"]", "pred": ["anticipation", "surprise"], "status": "ok"}
+{"align_id": "378ef6e71292", "gold": ["trust"], "raw_output": "[]", "pred": [], "status": "empty_list"}
+{"align_id": "953738a079fd", "gold": ["anticipation"], "raw_output": "[\"joy\", \"surprise\"]", "pred": ["joy", "surprise"], "status": "ok"}
+{"align_id": "7633f33653d6", "gold": ["fear"], "raw_output": "[\"anger\"]", "pred": ["anger"], "status": "ok"}
+{"align_id": "5e784461f96e", "gold": ["anger"], "raw_output": "[\"surprise\", \"fear\"]", "pred": ["fear", "surprise"], "status": "ok"}
+{"align_id": "cfa497671490", "gold": ["surprise"], "raw_output": "[]", "pred": [], "status": "empty_list"}
