@@ -1,28 +1,19 @@
-"""Zero-shot and five-shot prompting (project brief §3, Phase 2).
+"""Zero-shot and five-shot prompting.
 
-For every language in the config, each subtitle of the chosen split is sent to the model
-with the shared English instruction (prompting/prompts.py), decoded greedily, parsed with
-eval/metrics.py and scored with the shared metrics.
+For every subtitle we build the prompt, let the model answer, read the answer with
+parse_output() and compute the metrics. Everything is saved in
+results/prompting/<experiment>/<split>/:
+  predictions_<lang>.jsonl   for every line: gold labels, model answer, parsed labels
+  prompt_example_<lang>.txt  the full prompt of the first line (for the report)
+  metrics.json               the metrics for each language
+  run_info.json              settings, model version, library versions, GPU and time
 
-Outputs (in results/prompting/<experiment>/<split>[_limit<N>]/)
----------------------------------------------------------------
-- predictions_<lang>.jsonl   one line per example: id, gold, raw output, parsed labels
-- prompt_example_<lang>.txt  the complete rendered prompt of the first example
-- metrics.json               metrics per language
-- run_info.json              config, model commit, library versions, GPU, runtime
-
-Usage::
-
-    uv run python prompting/run_prompting.py --config configs/prompting/qwen3-8b_zero-shot.yaml
-    # quick check on 50 dev lines
-    uv run python prompting/run_prompting.py --config ... --limit 50
-    # prompt sensitivity: same config with another wording, saved as <experiment>_v2
-    uv run python prompting/run_prompting.py --config ... --variant v2
-    # final evaluation, only once the prompt is frozen
-    uv run python prompting/run_prompting.py --config ... --split test
+How to run it:
+  uv run python prompting/run_prompting.py --config configs/prompting/qwen3-8b_zero-shot.yaml
+  uv run python prompting/run_prompting.py --config ... --limit 50      # quick test on 50 lines
+  uv run python prompting/run_prompting.py --config ... --variant v2    # other prompt wording
+  uv run python prompting/run_prompting.py --config ... --split test    # final evaluation
 """
-
-from __future__ import annotations
 
 import argparse
 import json
@@ -37,134 +28,146 @@ import yaml
 from huggingface_hub import model_info
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+# Let Python find our own folders (eval/ and prompting/).
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from eval.metrics import compute_metrics, parse_output
 from prompting.prompts import build_messages
 
 
-# --------------------------------------------------------------------------- data
-def read_jsonl(path: Path) -> list[dict]:
-    with path.open(encoding="utf-8") as f:
-        return [json.loads(line) for line in f]
-
-
-def load_split(data_dir: Path, splits_dir: Path, split: str) -> list[dict]:
-    """Load a processed split and check it matches the committed alignment IDs."""
-    records = read_jsonl(data_dir / f"{split}.jsonl")
-    ids = (splits_dir / f"{split}_ids.txt").read_text(encoding="utf-8").split()
-    if [r["align_id"] for r in records] != ids:
-        raise ValueError(
-            f"{split}.jsonl does not match splits/{split}_ids.txt; "
-            "re-run data/prepare_data.py with the documented seed"
-        )
+def read_jsonl(path):
+    """Read a file with one JSON object per line."""
+    records = []
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            records.append(json.loads(line))
     return records
 
 
-def load_demos(data_dir: Path, demos_file: Path) -> list[dict]:
-    train = {r["align_id"]: r for r in read_jsonl(data_dir / "train.jsonl")}
-    ids = demos_file.read_text(encoding="utf-8").split()
-    missing = [i for i in ids if i not in train]
-    if missing:
-        raise ValueError(f"Demonstrations not in the training set: {missing}")
-    return [train[i] for i in ids]
+def load_split(split):
+    """Load train, dev or test, and check it is exactly the split saved in splits/."""
+    records = read_jsonl(f"data/processed/{split}.jsonl")
+    saved_ids = Path(f"splits/{split}_ids.txt").read_text().split()
+    ids = [record["align_id"] for record in records]
+    if ids != saved_ids:
+        raise ValueError(f"{split}.jsonl is not the saved split, run data/prepare_data.py again")
+    return records
 
 
-# --------------------------------------------------------------------------- model
-def load_model(cfg: dict):
-    m = cfg["model"]
-    tok = AutoTokenizer.from_pretrained(m["name"], revision=m["revision"])
-    tok.padding_side = "left"  # decoder-only models must be left-padded for batching
-    if tok.pad_token is None:
-        tok.pad_token = tok.eos_token
-    model = AutoModelForCausalLM.from_pretrained(
-        m["name"],
-        revision=m["revision"],
-        dtype=getattr(torch, m["dtype"]),
-        device_map="auto",
-    )
+def load_demos(demos_file):
+    """Load the five-shot examples (their IDs are in splits/fewshot_ids.txt)."""
+    train = {}
+    for record in read_jsonl("data/processed/train.jsonl"):
+        train[record["align_id"]] = record
+    demos = []
+    for align_id in Path(demos_file).read_text().split():
+        demos.append(train[align_id])
+    return demos
+
+
+def load_model(cfg):
+    name = cfg["model"]["name"]
+    revision = cfg["model"]["revision"]  # exact version of the model
+    dtype = getattr(torch, cfg["model"]["dtype"])  # "bfloat16" -> torch.bfloat16
+
+    tokenizer = AutoTokenizer.from_pretrained(name, revision=revision)
+    # To give the model several prompts at once, the shorter ones are filled up with
+    # padding. For this kind of model the padding has to go on the left.
+    tokenizer.padding_side = "left"
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+
+    model = AutoModelForCausalLM.from_pretrained(name, revision=revision, dtype=dtype, device_map="auto")
     model.eval()
-    return tok, model
+    return tokenizer, model
 
 
-def model_commit(m: dict) -> str | None:
-    """Resolved Hugging Face commit of the model revision, for reproducibility."""
+def model_commit(cfg):
+    """The exact version (commit) of the model on Hugging Face, saved for reproducibility."""
     try:
-        return model_info(m["name"], revision=m["revision"]).sha
-    except Exception:  # noqa: BLE001  (offline: record nothing rather than fail)
-        return None
+        return model_info(cfg["model"]["name"], revision=cfg["model"]["revision"]).sha
+    except Exception:
+        return None  # e.g. no internet
 
 
-@torch.no_grad()
-def generate(tok, model, prompts: list[str], cfg: dict) -> list[str]:
-    dec = cfg["decoding"]
-    outputs = []
-    for start in range(0, len(prompts), cfg["batch_size"]):
-        batch = prompts[start : start + cfg["batch_size"]]
-        # The chat template already inserts the special tokens (e.g. BOS).
-        enc = tok(batch, return_tensors="pt", padding=True, add_special_tokens=False)
-        enc = enc.to(model.device)
-        out = model.generate(
-            **enc,
-            do_sample=dec["do_sample"],
-            max_new_tokens=dec["max_new_tokens"],
+@torch.no_grad()  # we only use the model, we do not train it here
+def generate(tokenizer, model, prompts, cfg):
+    """Give the prompts to the model in batches and return its answers as text."""
+    answers = []
+    batch_size = cfg["batch_size"]
+    for start in range(0, len(prompts), batch_size):
+        batch = prompts[start : start + batch_size]
+        # The chat template already added the special tokens, so we do not add them again.
+        inputs = tokenizer(batch, return_tensors="pt", padding=True, add_special_tokens=False)
+        inputs = inputs.to(model.device)
+        output = model.generate(
+            **inputs,
+            do_sample=cfg["decoding"]["do_sample"],  # False = always take the most likely word
+            max_new_tokens=cfg["decoding"]["max_new_tokens"],
             temperature=None,
             top_p=None,
             top_k=None,
-            pad_token_id=tok.pad_token_id,
+            pad_token_id=tokenizer.pad_token_id,
         )
-        new_tokens = out[:, enc["input_ids"].shape[1] :]
-        outputs.extend(tok.batch_decode(new_tokens, skip_special_tokens=True))
-        print(f"  {min(start + len(batch), len(prompts))}/{len(prompts)}", flush=True)
-    return outputs
+        # The output starts with the prompt itself; keep only the new tokens.
+        prompt_length = inputs["input_ids"].shape[1]
+        new_tokens = output[:, prompt_length:]
+        answers += tokenizer.batch_decode(new_tokens, skip_special_tokens=True)
+        print(f"  {start + len(batch)}/{len(prompts)}", flush=True)
+    return answers
 
 
-# --------------------------------------------------------------------------- evaluation
-def evaluate_languages(
-    tok, model, records, languages, cfg, demos, out_dir: Path
-) -> tuple[dict, dict]:
-    """Generate, parse and score every language; also used by peft/evaluate_peft.py."""
-    template_kwargs = cfg.get("chat_template_kwargs") or {}
-    all_metrics, runtime = {}, {}
+def make_prompt(tokenizer, text, cfg, demos):
+    """Turn the chat messages into the exact text format the model expects."""
+    messages = build_messages(text, cfg["prompt"]["variant"], demos)
+    # Extra settings for the chat template, e.g. enable_thinking=False for Qwen3.
+    template_settings = cfg.get("chat_template_kwargs") or {}
+    return tokenizer.apply_chat_template(
+        messages, tokenize=False, add_generation_prompt=True, **template_settings
+    )
+
+
+def evaluate_languages(tokenizer, model, records, languages, cfg, demos, out_dir):
+    """Run the model on every language and save predictions and metrics.
+
+    Also used by peft/evaluate_peft.py. Returns the time it took per language.
+    """
+    all_metrics = {}
+    runtime = {}
     for lang in languages:
         print(f"[{cfg['experiment']}] {lang}: {len(records)} examples")
-        lang_demos = [(d[f"text_{lang}"], d["labels"]) for d in demos]
-        prompts = [
-            tok.apply_chat_template(
-                build_messages(r[f"text_{lang}"], cfg["prompt"]["variant"], lang_demos),
-                tokenize=False,
-                add_generation_prompt=True,
-                **template_kwargs,
-            )
-            for r in records
-        ]
-        (out_dir / f"prompt_example_{lang}.txt").write_text(
-            prompts[0], encoding="utf-8"
-        )
 
-        t0 = time.perf_counter()
-        raw = generate(tok, model, prompts, cfg)
-        runtime[lang] = round(time.perf_counter() - t0, 1)
+        # The five-shot examples in the same language as the question.
+        lang_demos = []
+        for demo in demos:
+            lang_demos.append((demo[f"text_{lang}"], demo["labels"]))
 
-        parsed = [parse_output(o) for o in raw]
-        preds = [labels for labels, _ in parsed]
-        status = [s for _, s in parsed]
-        gold = [r["labels"] for r in records]
+        prompts = []
+        for record in records:
+            prompts.append(make_prompt(tokenizer, record[f"text_{lang}"], cfg, lang_demos))
+        (out_dir / f"prompt_example_{lang}.txt").write_text(prompts[0], encoding="utf-8")
 
-        with (out_dir / f"predictions_{lang}.jsonl").open("w", encoding="utf-8") as f:
-            for r, o, pr, st in zip(records, raw, preds, status):
+        start = time.time()
+        answers = generate(tokenizer, model, prompts, cfg)
+        runtime[lang] = round(time.time() - start, 1)
+
+        gold, predictions, status = [], [], []
+        with open(out_dir / f"predictions_{lang}.jsonl", "w", encoding="utf-8") as f:
+            for record, answer in zip(records, answers):
+                labels, answer_status = parse_output(answer)
+                gold.append(record["labels"])
+                predictions.append(labels)
+                status.append(answer_status)
                 row = {
-                    "align_id": r["align_id"],
-                    "text": r[f"text_{lang}"],
-                    "gold": r["labels"],
-                    "raw_output": o,
-                    "pred": pr,
-                    "status": st,
-                    "malformed": st != "ok",
+                    "align_id": record["align_id"],
+                    "gold": record["labels"],
+                    "raw_output": answer,
+                    "pred": labels,
+                    "status": answer_status,
                 }
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
-        all_metrics[lang] = compute_metrics(gold, preds, status)
-        m = all_metrics[lang]
+        m = compute_metrics(gold, predictions, status)
+        all_metrics[lang] = m
         print(
             f"  micro-F1 {m['micro_f1']:.3f} | Jaccard {m['jaccard_samples']:.3f} "
             f"| macro-F1 {m['macro_f1']:.3f} | malformed {m['malformed_rate']:.1%} "
@@ -172,14 +175,17 @@ def evaluate_languages(
         )
 
     (out_dir / "metrics.json").write_text(json.dumps(all_metrics, indent=2))
-    return all_metrics, runtime
+    return runtime
 
 
-def environment_info(model) -> dict:
+def environment_info():
+    """GPU and library versions, saved with every run."""
+    if torch.cuda.is_available():
+        device = torch.cuda.get_device_name(0)
+    else:
+        device = "cpu"
     return {
-        "device": torch.cuda.get_device_name(0)
-        if torch.cuda.is_available()
-        else str(model.device),
+        "device": device,
         "versions": {
             "python": platform.python_version(),
             "torch": torch.__version__,
@@ -189,61 +195,54 @@ def environment_info(model) -> dict:
     }
 
 
-# --------------------------------------------------------------------------- main
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--config", type=Path, required=True)
-    ap.add_argument("--split", choices=["dev", "test"], default="dev")
-    ap.add_argument("--limit", type=int, help="only the first N examples (smoke test)")
-    ap.add_argument("--model", help="override the model name (smoke test only)")
-    ap.add_argument(
-        "--variant",
-        choices=["v1", "v2", "v3"],
-        help="override the prompt variant (prompt-sensitivity runs, dev only)",
-    )
-    ap.add_argument("--data", type=Path, default=Path("data/processed"))
-    ap.add_argument("--splits", type=Path, default=Path("splits"))
-    ap.add_argument("--results", type=Path, default=Path("results/prompting"))
-    args = ap.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", required=True)
+    parser.add_argument("--split", choices=["dev", "test"], default="dev")
+    parser.add_argument("--limit", type=int, help="only use the first N lines (quick test)")
+    parser.add_argument("--variant", choices=["v1", "v2", "v3"], help="other prompt wording (dev only)")
+    args = parser.parse_args()
 
-    cfg = yaml.safe_load(args.config.read_text(encoding="utf-8"))
-    if args.model:
-        cfg["model"]["name"] = args.model
-        cfg["experiment"] += "_override-" + args.model.replace("/", "_")
-    if args.variant and args.variant != cfg["prompt"]["variant"]:
+    cfg = yaml.safe_load(Path(args.config).read_text(encoding="utf-8"))
+
+    # Prompt sensitivity: run the same experiment with another prompt, saved in its own folder.
+    if args.variant is not None and args.variant != cfg["prompt"]["variant"]:
         if args.split == "test":
-            raise ValueError("Prompt variants are compared on dev only (brief §3)")
+            raise ValueError("prompt variants are only compared on dev")
         cfg["prompt"]["variant"] = args.variant
-        cfg["experiment"] += "_" + args.variant
+        cfg["experiment"] = cfg["experiment"] + "_" + args.variant
+
     transformers.set_seed(cfg["seed"])
 
-    records = load_split(args.data, args.splits, args.split)
+    records = load_split(args.split)
     if args.limit:
         records = records[: args.limit]
-    p = cfg["prompt"]
-    demos = load_demos(args.data, Path(p["demos_file"])) if p["n_shots"] else []
-    if len(demos) != p["n_shots"]:
-        raise ValueError(f"Expected {p['n_shots']} demonstrations, got {len(demos)}")
 
-    run_name = args.split + (f"_limit{args.limit}" if args.limit else "")
-    out_dir = args.results / cfg["experiment"] / run_name
+    if cfg["prompt"]["n_shots"] > 0:
+        demos = load_demos(cfg["prompt"]["demos_file"])
+    else:
+        demos = []
+
+    run_name = args.split
+    if args.limit:
+        run_name = f"{args.split}_limit{args.limit}"
+    out_dir = Path("results/prompting") / cfg["experiment"] / run_name
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    tok, model = load_model(cfg)
-    _, runtime = evaluate_languages(
-        tok, model, records, cfg["languages"], cfg, demos, out_dir
-    )
+    tokenizer, model = load_model(cfg)
+    runtime = evaluate_languages(tokenizer, model, records, cfg["languages"], cfg, demos, out_dir)
+
     info = {
         "config": cfg,
-        "config_file": str(args.config),
+        "config_file": args.config,
         "split": args.split,
         "limit": args.limit,
         "n_examples": len(records),
-        "demo_ids": [d["align_id"] for d in demos],
-        "model_commit": model_commit(cfg["model"]),
+        "demo_ids": [demo["align_id"] for demo in demos],
+        "model_commit": model_commit(cfg),
         "runtime_seconds": runtime,
-        **environment_info(model),
     }
+    info.update(environment_info())
     (out_dir / "run_info.json").write_text(json.dumps(info, indent=2))
     print(f"Saved to {out_dir}")
 

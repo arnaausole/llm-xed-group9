@@ -1,27 +1,7 @@
-"""Shared output parser and multi-label metrics (project brief §3 and §7).
+"""Read the answer of the model and compute the evaluation metrics.
 
-Every experiment (prompting and PEFT) must use this module so that all numbers are
-computed from the same binarised eight-label predictions with the same policy.
-
-Parser policy
--------------
-- Find the first JSON list in the model output.
-- Normalise case and surrounding whitespace of each element.
-- Keep only the eight permitted English labels; NO synonym mapping ("happy" != "joy").
-- Remove duplicate labels.
-- Malformed output (no parsable JSON list) or a list with no permitted label
-  -> empty prediction, flagged as malformed and reported separately.
-- For diagnosis, every output gets a status: "ok", "empty_list" (a valid but empty
-  JSON list, i.e. the model answered "no emotion") or "invalid" (no JSON list, or only
-  non-permitted labels). Malformed = "empty_list" or "invalid".
-
-Metric policy
--------------
-- Fixed label order: LABELS below.
-- zero_division=0 for every sklearn metric.
+All experiments (prompting and QLoRA) use this file, so they are scored the same way.
 """
-
-from __future__ import annotations
 
 import json
 import re
@@ -38,111 +18,100 @@ from sklearn.metrics import (
     recall_score,
 )
 
-LABELS = [
-    "anger",
-    "anticipation",
-    "disgust",
-    "fear",
-    "joy",
-    "sadness",
-    "surprise",
-    "trust",
-]
-ZERO_DIVISION = 0
-
-_LIST_RE = re.compile(r"\[[^\[\]]*\]", re.DOTALL)
+# The eight emotions, always in this order.
+LABELS = ["anger", "anticipation", "disgust", "fear", "joy", "sadness", "surprise", "trust"]
 
 
-def parse_output(text: str) -> tuple[list[str], str]:
-    """Return (labels, status) with status "ok", "empty_list" or "invalid"."""
-    for match in _LIST_RE.finditer(text or ""):
+def parse_output(text):
+    """Turn the text of the model into a list of labels.
+
+    Returns (labels, status). The status is:
+      "ok"          we found at least one valid label
+      "empty_list"  the model answered with an empty list: []
+      "invalid"     there is no JSON list, or the list has no valid label
+    For "empty_list" and "invalid" the labels are [] (we call these answers malformed).
+    """
+    if text is None:
+        text = ""
+
+    # Look for something like [ ... ] in the text and use the first one that is valid JSON.
+    for match in re.finditer(r"\[[^\[\]]*\]", text):
         try:
             items = json.loads(match.group(0))
         except json.JSONDecodeError:
             continue
-        if not isinstance(items, list):
-            continue
+
         labels = []
         for item in items:
-            if isinstance(item, str):
-                lab = item.strip().lower()
-                if lab in LABELS and lab not in labels:
-                    labels.append(lab)
+            if not isinstance(item, str):
+                continue
+            label = item.strip().lower()  # "  Joy " -> "joy"
+            # Only the eight labels count; we do not translate synonyms ("happy" is not "joy").
+            if label in LABELS and label not in labels:
+                labels.append(label)
         labels.sort(key=LABELS.index)
-        if labels:
+
+        if len(labels) > 0:
             return labels, "ok"
-        return [], "empty_list" if not items else "invalid"
+        if len(items) == 0:
+            return [], "empty_list"
+        return [], "invalid"
+
+    # No JSON list at all.
     return [], "invalid"
 
 
-def binarize(label_lists: list[list[str]]) -> np.ndarray:
-    y = np.zeros((len(label_lists), len(LABELS)), dtype=int)
-    for i, labs in enumerate(label_lists):
-        for lab in labs:
-            y[i, LABELS.index(lab)] = 1
-    return y
+def to_matrix(label_lists):
+    """Turn lists of labels into a 0/1 table: one row per line, one column per emotion."""
+    matrix = np.zeros((len(label_lists), len(LABELS)), dtype=int)
+    for row, labels in enumerate(label_lists):
+        for label in labels:
+            matrix[row, LABELS.index(label)] = 1
+    return matrix
 
 
-def compute_metrics(
-    gold: list[list[str]],
-    pred: list[list[str]],
-    status: list[str] | None = None,
-) -> dict:
-    y_true, y_pred = binarize(gold), binarize(pred)
-    zd = ZERO_DIVISION
-    p, r, f, s = precision_recall_fscore_support(
-        y_true, y_pred, average=None, zero_division=zd
+def compute_metrics(gold, pred, status=None):
+    """Compare the predicted labels with the gold labels.
+
+    If a metric divides by zero (e.g. an emotion is never predicted) it counts as 0.
+    """
+    y_true = to_matrix(gold)
+    y_pred = to_matrix(pred)
+
+    metrics = {}
+    # primary metrics
+    metrics["micro_f1"] = float(f1_score(y_true, y_pred, average="micro", zero_division=0))
+    metrics["jaccard_samples"] = float(jaccard_score(y_true, y_pred, average="samples", zero_division=0))
+    # secondary metrics
+    metrics["macro_f1"] = float(f1_score(y_true, y_pred, average="macro", zero_division=0))
+    metrics["micro_precision"] = float(precision_score(y_true, y_pred, average="micro", zero_division=0))
+    metrics["micro_recall"] = float(recall_score(y_true, y_pred, average="micro", zero_division=0))
+    metrics["hamming_loss"] = float(hamming_loss(y_true, y_pred))  # lower is better
+    # diagnostic metrics
+    metrics["exact_match"] = float(accuracy_score(y_true, y_pred))  # all 8 labels right
+
+    # precision, recall, F1 and number of gold examples for each emotion
+    precision, recall, f1, support = precision_recall_fscore_support(
+        y_true, y_pred, average=None, zero_division=0
     )
-    out = {
-        # primary
-        "micro_f1": f1_score(y_true, y_pred, average="micro", zero_division=zd),
-        "jaccard_samples": jaccard_score(
-            y_true, y_pred, average="samples", zero_division=zd
-        ),
-        # secondary
-        "macro_f1": f1_score(y_true, y_pred, average="macro", zero_division=zd),
-        "micro_precision": precision_score(
-            y_true, y_pred, average="micro", zero_division=zd
-        ),
-        "micro_recall": recall_score(y_true, y_pred, average="micro", zero_division=zd),
-        "hamming_loss": hamming_loss(y_true, y_pred),
-        # diagnostic
-        "exact_match": accuracy_score(y_true, y_pred),
-        "per_label": {
-            lab: {
-                "precision": float(p[i]),
-                "recall": float(r[i]),
-                "f1": float(f[i]),
-                "support": int(s[i]),
-            }
-            for i, lab in enumerate(LABELS)
-        },
-        "n": len(gold),
-        "label_order": LABELS,
-        "zero_division": zd,
-        "sklearn_version": sklearn.__version__,
-    }
+    metrics["per_label"] = {}
+    for i, label in enumerate(LABELS):
+        metrics["per_label"][label] = {
+            "precision": float(precision[i]),
+            "recall": float(recall[i]),
+            "f1": float(f1[i]),
+            "support": int(support[i]),
+        }
+
+    metrics["n"] = len(gold)
+    metrics["label_order"] = LABELS
+    metrics["zero_division"] = 0
+    metrics["sklearn_version"] = sklearn.__version__
+
+    # how often the model gave no usable answer
     if status is not None:
-        n = max(len(status), 1)
-        out["malformed_rate"] = sum(s != "ok" for s in status) / n
-        out["empty_list_rate"] = status.count("empty_list") / n
-        out["invalid_rate"] = status.count("invalid") / n
-    return {k: (float(v) if isinstance(v, np.floating) else v) for k, v in out.items()}
-
-
-if __name__ == "__main__":
-    # Quick self-check: uv run python eval/metrics.py
-    outputs = [
-        '["joy", "Trust"]',
-        'Answer: ["anger"]',
-        '["happy"]',  # synonym -> not mapped -> invalid
-        "I think it's fear",  # no JSON -> invalid
-        '["fear", "fear", "surprise"]',
-        "[]",  # valid JSON, no emotion -> empty_list
-    ]
-    gold = [["joy", "trust"], ["anger"], ["joy"], ["fear"], ["fear"], ["sadness"]]
-    parsed = [parse_output(o) for o in outputs]
-    pred, status = [p for p, _ in parsed], [s for _, s in parsed]
-    print(pred, status)
-    m = compute_metrics(gold, pred, status)
-    print({k: v for k, v in m.items() if k != "per_label"})
+        n = len(status)
+        metrics["malformed_rate"] = (n - status.count("ok")) / n
+        metrics["empty_list_rate"] = status.count("empty_list") / n
+        metrics["invalid_rate"] = status.count("invalid") / n
+    return metrics

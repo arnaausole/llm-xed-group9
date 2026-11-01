@@ -1,31 +1,21 @@
-"""Prompt templates shared by prompting and PEFT (project brief §3).
+"""The prompts we send to the models (used by prompting and by QLoRA).
 
-The instruction is always in English, for English and Spanish subtitles alike. It goes in
-the system message; every subtitle (demonstration or query) is one user turn and every
-answer one assistant turn holding a JSON list. Five-shot prompting therefore uses exactly
-the same turns as zero-shot, with five demonstration turn pairs in front of the query.
+The instruction is always in English, also for Spanish subtitles. It goes in the
+"system" message. Then every subtitle is a "user" message and every answer an
+"assistant" message. For five-shot we put five solved examples before the real question.
 
-Variants (for the prompt-sensitivity analysis on the development set only):
-- v1: main prompt, labels with short definitions, alphabetical order.
-- v2: same definitions, reworded and more compact instruction.
-- v3: v1 with the labels listed in a different (fixed) order.
+We have three versions of the instruction:
+  v1  the main prompt (used for all final results)
+  v2  the same idea with other words
+  v3  v1 with the emotions listed in another order
+v2 and v3 are only used on the dev set, to see how much the wording matters.
 """
-
-from __future__ import annotations
 
 import json
 
-LABELS = [
-    "anger",
-    "anticipation",
-    "disgust",
-    "fear",
-    "joy",
-    "sadness",
-    "surprise",
-    "trust",
-]
+from eval.metrics import LABELS
 
+# A short explanation of each emotion, shown to the model.
 DEFINITIONS = {
     "anger": "annoyance, rage, hostility",
     "anticipation": "expectation, interest, looking forward to or planning something",
@@ -37,23 +27,10 @@ DEFINITIONS = {
     "trust": "acceptance, admiration, reassurance, confidence in someone",
 }
 
-V3_ORDER = [
-    "trust",
-    "fear",
-    "joy",
-    "disgust",
-    "surprise",
-    "anger",
-    "sadness",
-    "anticipation",
-]
+# The order of the emotions in prompt v3.
+V3_ORDER = ["trust", "fear", "joy", "disgust", "surprise", "anger", "sadness", "anticipation"]
 
-
-def _label_block(order: list[str]) -> str:
-    return "\n".join(f"- {lab}: {DEFINITIONS[lab]}" for lab in order)
-
-
-_V1 = """You are an annotator of emotions in movie subtitles.
+V1 = """You are an annotator of emotions in movie subtitles.
 Read one subtitle line and decide which emotions it expresses. Use only these eight labels:
 {labels}
 
@@ -61,37 +38,42 @@ A line can express one emotion or several emotions at the same time; return ever
 Every subtitle line expresses at least one of these emotions, even if it is subtle. Never return an empty list; if unsure, choose the most likely emotion.
 Answer with a JSON list that contains only the label names above, written in English exactly as shown, and nothing else."""
 
-_V2 = """Task: multi-label emotion classification of a single movie subtitle line.
+V2 = """Task: multi-label emotion classification of a single movie subtitle line.
 Allowed labels:
 {labels}
 
 Every line expresses at least one of these emotions, even if subtle; never return an empty list.
 Return all labels that apply (one or more) as a JSON list of English label names, e.g. ["<label>", "<label>"]. Output only the JSON list."""
 
+
+def label_list(order):
+    """Write the emotions as a list, e.g. "- anger: annoyance, rage, hostility"."""
+    lines = []
+    for label in order:
+        lines.append(f"- {label}: {DEFINITIONS[label]}")
+    return "\n".join(lines)
+
+
 SYSTEM_PROMPTS = {
-    "v1": _V1.format(labels=_label_block(LABELS)),
-    "v2": _V2.format(labels=_label_block(LABELS)),
-    "v3": _V1.format(labels=_label_block(V3_ORDER)),
+    "v1": V1.format(labels=label_list(LABELS)),
+    "v2": V2.format(labels=label_list(LABELS)),
+    "v3": V1.format(labels=label_list(V3_ORDER)),
 }
 
 
-def user_turn(text: str) -> str:
-    return f"Subtitle: {text}"
-
-
-def answer_turn(labels: list[str]) -> str:
+def answer_turn(labels):
+    """The correct answer as text, e.g. '["fear", "sadness"]' (labels in the fixed order)."""
     return json.dumps(sorted(labels, key=LABELS.index))
 
 
-def build_messages(
-    text: str,
-    variant: str = "v1",
-    demos: list[tuple[str, list[str]]] | None = None,
-) -> list[dict]:
-    """Chat messages for one query; ``demos`` is a list of (text, labels) pairs."""
+def build_messages(text, variant="v1", demos=()):
+    """Make the chat messages for one subtitle.
+
+    demos is a list of (subtitle, labels) examples; empty for zero-shot.
+    """
     messages = [{"role": "system", "content": SYSTEM_PROMPTS[variant]}]
-    for demo_text, demo_labels in demos or []:
-        messages.append({"role": "user", "content": user_turn(demo_text)})
+    for demo_text, demo_labels in demos:
+        messages.append({"role": "user", "content": f"Subtitle: {demo_text}"})
         messages.append({"role": "assistant", "content": answer_turn(demo_labels)})
-    messages.append({"role": "user", "content": user_turn(text)})
+    messages.append({"role": "user", "content": f"Subtitle: {text}"})
     return messages

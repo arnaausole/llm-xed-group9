@@ -1,7 +1,7 @@
 [project]
 name = "llm-xed-group9"
 version = "0.1.0"
-description = "Add your description here"
+description = "Cross-lingual multi-label emotion classification on XED (English + Spanish) with prompting and QLoRA"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -23,4 +23,13 @@ dependencies = [
 [dependency-groups]
 dev = [
     "ruff>=0.17.2",
+]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+ignore = [
+    "BLE001",  # model_commit() may fail for any reason when offline
+    "FURB122",  # a plain for loop with f.write is easier to read
 ]

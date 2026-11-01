@@ -1,71 +1,76 @@
-"""Select the five fixed five-shot demonstrations from the training set.
+"""Choose the five examples used in five-shot prompting.
 
-Procedure (deterministic given the seed)
-----------------------------------------
-1. Candidates: training pairs whose source side is an English subtitle file (in
-   ``pairs-es.txt`` part of the source side is Danish), with one or two labels, whose
-   English and Spanish lines are both 15-120 characters long (long enough to carry
-   meaning, short enough to keep the prompt compact), and whose duplicate group has a
-   single member.
-2. Shuffle the candidates with the seed.
-3. Greedily pick five: each step takes the first candidate (in shuffled order) that adds
-   the most not-yet-covered labels, so that the five demonstrations together cover as
-   many of the eight labels as possible.
+Rules:
+  - they come from the training set
+  - they have 1 or 2 emotions
+  - the English and the Spanish line are both 15-120 characters long
+  - the line has no duplicates in the data
+We shuffle these candidates (seed 42) and pick five, one by one. Each time we take the
+first candidate that adds the most emotions we do not have yet, so the five examples
+show as many of the eight emotions as possible.
 
-The same alignment IDs are used for every model; English evaluation shows the English
-lines, Spanish evaluation shows their Spanish counterparts.
+The same five IDs are used for all models (English lines for English, Spanish for Spanish).
 
-Usage::
-
-    uv run python prompting/select_demos.py --seed 42
+How to run it:
+  uv run python prompting/select_demos.py --seed 42
 """
-
-from __future__ import annotations
 
 import argparse
 import json
 import random
 from collections import Counter
-from pathlib import Path
 
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--train", type=Path, default=Path("data/processed/train.jsonl"))
-    ap.add_argument("--out", type=Path, default=Path("splits/fewshot_ids.txt"))
-    ap.add_argument("--k", type=int, default=5)
-    ap.add_argument("--seed", type=int, default=42)
-    args = ap.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--seed", type=int, default=42)
+    args = parser.parse_args()
 
-    records = [json.loads(line) for line in args.train.open(encoding="utf-8")]
-    group_size = Counter(r["dup_group"] for r in records)
-    candidates = [
-        r
-        for r in records
-        if r["en_file"].startswith("en/")
-        and 1 <= len(r["labels"]) <= 2
-        and all(15 <= len(r[f"text_{lang}"]) <= 120 for lang in ("en", "es"))
-        and group_size[r["dup_group"]] == 1
-    ]
+    records = []
+    with open("data/processed/train.jsonl", encoding="utf-8") as f:
+        for line in f:
+            records.append(json.loads(line))
+
+    # how many lines are in each duplicate group
+    group_size = Counter(record["dup_group"] for record in records)
+
+    candidates = []
+    for record in records:
+        if not 1 <= len(record["labels"]) <= 2:
+            continue
+        if not 15 <= len(record["text_en"]) <= 120:
+            continue
+        if not 15 <= len(record["text_es"]) <= 120:
+            continue
+        if group_size[record["dup_group"]] != 1:
+            continue
+        candidates.append(record)
     random.Random(args.seed).shuffle(candidates)
 
-    chosen, covered = [], set()
-    for _ in range(args.k):
-        best = max(
-            (r for r in candidates if r not in chosen),
-            key=lambda r: len(set(r["labels"]) - covered),
-        )
+    chosen = []
+    covered = set()  # emotions we already have
+    for _ in range(5):
+        best = None
+        best_new = -1
+        for record in candidates:
+            if record in chosen:
+                continue
+            new = len(set(record["labels"]) - covered)  # emotions this one would add
+            if new > best_new:
+                best = record
+                best_new = new
         chosen.append(best)
         covered.update(best["labels"])
 
-    args.out.write_text(
-        "\n".join(r["align_id"] for r in chosen) + "\n", encoding="utf-8"
-    )
-    print(f"{len(candidates)} candidates, labels covered: {len(covered)}/8")
-    for r in chosen:
-        print(
-            f"{r['align_id']}  {r['labels']}\n  EN: {r['text_en']}\n  ES: {r['text_es']}"
-        )
+    with open("splits/fewshot_ids.txt", "w") as f:
+        for record in chosen:
+            f.write(record["align_id"] + "\n")
+
+    print(f"{len(candidates)} candidates, emotions covered: {len(covered)}/8")
+    for record in chosen:
+        print(record["align_id"], record["labels"])
+        print("  EN:", record["text_en"])
+        print("  ES:", record["text_es"])
 
 
 if __name__ == "__main__":
