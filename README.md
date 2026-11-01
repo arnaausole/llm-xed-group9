@@ -121,6 +121,17 @@ Results are saved in `results/prompting/<experiment>/<split>/` and
 `results/peft/<experiment>/<split>/`. Adapters and checkpoints go to `outputs/` and are
 not committed.
 
+## Analysis
+
+These scripts only read `results/` (no GPU needed) and write to `results/analysis/`:
+
+```bash
+uv run python analysis/analyze.py         # tables.md (all tables, bootstrap CIs) + fig_*.png
+uv run python analysis/find_examples.py   # examples_test.md (QLoRA vs prompting examples)
+```
+
+Confidence intervals use a paired bootstrap over the test lines (1000 samples, seed 42).
+
 ## Reference
 
 Öhman, E., Pàmies, M., Kajava, K. and Tiedemann, J. (2020). XED: A Multilingual Dataset
