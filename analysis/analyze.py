@@ -234,6 +234,7 @@ def label_count_table(split):
 
 
 def per_label_table(split, lang):
+    """Precision / recall / F1 per emotion, one cell per emotion."""
     header = ["System"] + LABELS
     rows = []
     support = None
@@ -242,7 +243,11 @@ def per_label_table(split, lang):
         if lang not in metrics:
             continue
         per_label = metrics[lang]["per_label"]
-        rows.append([name] + [f"{per_label[label]['f1']:.2f}" for label in LABELS])
+        cells = []
+        for label in LABELS:
+            scores = per_label[label]
+            cells.append(f"{scores['precision']:.2f} / {scores['recall']:.2f} / {scores['f1']:.2f}")
+        rows.append([name] + cells)
         support = [str(per_label[label]["support"]) for label in LABELS]
     rows.append(["*support (gold lines)*"] + support)
     return markdown_table(header, rows)
@@ -394,7 +399,7 @@ def figure_per_label(split):
             for col in range(table.shape[1]):
                 text_color = "white" if table[row, col] > 0.5 else INK
                 ax.text(
-                    col, row, f"{table[row, col]:.2f}", ha="center", va="center", fontsize=7, color=text_color
+                    col, row, f"{table[row, col]:.2f}", ha="center", va="center", fontsize=9, color=text_color
                 )
         ax.set_xticks(range(len(LABELS)), LABELS, rotation=40, ha="right")
         ax.set_yticks(range(len(names)), names)
@@ -488,8 +493,8 @@ def main():
         ("4. Paired comparisons on test (A − B)", comparisons),
         ("5. Language gap on test (same lines in English and Spanish)", language_gap_table(counts, samples)),
         ("6. Number of predicted labels, precision and recall (test)", label_count_table("test")),
-        ("7a. F1 per emotion, English (test)", per_label_table("test", "en")),
-        ("7b. F1 per emotion, Spanish (test)", per_label_table("test", "es")),
+        ("7a. Precision / recall / F1 per emotion, English (test)", per_label_table("test", "en")),
+        ("7b. Precision / recall / F1 per emotion, Spanish (test)", per_label_table("test", "es")),
         ("8. Prompt sensitivity, micro-F1 on dev", prompt_sensitivity_table()),
         ("9a. Malformed outputs (test)", malformed_table("test")),
         ("9b. Malformed outputs (dev)", malformed_table("dev")),
