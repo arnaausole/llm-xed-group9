@@ -1,12 +1,7 @@
-"""Evaluate a trained QLoRA adapter on dev or test.
+"""Evaluate a trained adapter on dev or test.
 
-We load the normal model (bf16, the same as in prompting) and put the trained LoRA
-layers on top. The prompt, parser and metrics are the same as in zero-shot prompting,
-so the only difference is the training. Results go to results/peft/<experiment>/<split>/.
-
-How to run it:
-  uv run python peft/evaluate_peft.py --config configs/peft/qwen3-8b_qlora_en.yaml --split dev
-  uv run python peft/evaluate_peft.py --config ... --split test    # final evaluation
+The adapter is put on the normal bf16 model and gets the zero-shot prompt, so prompt,
+parser and metrics are the same as in zero-shot prompting.
 """
 
 import argparse

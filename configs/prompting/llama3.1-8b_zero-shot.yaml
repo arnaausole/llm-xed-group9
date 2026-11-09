@@ -1,10 +1,10 @@
-# zero-shot prompting. Second model (prompting only); gated on Hugging Face, needs an access token.
+# Llama 3.1 zero-shot (gated model, needs a HF token)
 experiment: llama3.1-8b_zero-shot
 
 model:
   name: meta-llama/Llama-3.1-8B-Instruct
-  revision: 0e9e39f249a16976918f6564b8830bc894c89659  # pinned: commit used for all dev runs
-  dtype: bfloat16  # use float16 on GPUs without bfloat16 support (e.g. V100)
+  revision: 0e9e39f249a16976918f6564b8830bc894c89659
+  dtype: bfloat16
 chat_template_kwargs: {}
 
 prompt:
@@ -15,7 +15,7 @@ prompt:
 languages: [en, es]
 
 decoding:
-  do_sample: false  # greedy, deterministic
+  do_sample: false  # greedy
   max_new_tokens: 64
 
 batch_size: 16

@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Download the XED dataset (CC-BY 4.0) into data/raw/XED.
-# The data itself is NOT committed to this repository.
+# Download XED into data/raw/XED (not in git)
 set -euo pipefail
 
 DEST="data/raw/XED"
-# Pin the exact upstream commit for reproducibility.
+# fixed commit so everyone gets the same data
 XED_COMMIT="76666d2"
 
 if [ -d "$DEST/.git" ]; then

@@ -1,21 +1,14 @@
-"""The prompts we send to the models (used by prompting and by QLoRA).
+"""Prompts used for prompting and for QLoRA.
 
-The instruction is always in English, also for Spanish subtitles. It goes in the
-"system" message. Then every subtitle is a "user" message and every answer an
-"assistant" message. For five-shot we put five solved examples before the real question.
-
-We have three versions of the instruction:
-  v1  the main prompt (used for all final results)
-  v2  the same idea with other words
-  v3  v1 with the emotions listed in another order
-v2 and v3 are only used on the dev set, to see how much the wording matters.
+The instruction is in English for both languages and goes in the system message.
+v1 is the main prompt. v2 (other wording) and v3 (other label order) are only run on dev.
 """
 
 import json
 
 from eval.metrics import LABELS
 
-# A short explanation of each emotion, shown to the model.
+# short description of each emotion
 DEFINITIONS = {
     "anger": "annoyance, rage, hostility",
     "anticipation": "expectation, interest, looking forward to or planning something",
@@ -27,7 +20,6 @@ DEFINITIONS = {
     "trust": "acceptance, admiration, reassurance, confidence in someone",
 }
 
-# The order of the emotions in prompt v3.
 V3_ORDER = ["trust", "fear", "joy", "disgust", "surprise", "anger", "sadness", "anticipation"]
 
 V1 = """You are an annotator of emotions in movie subtitles.
@@ -47,7 +39,6 @@ Return all labels that apply (one or more) as a JSON list of English label names
 
 
 def label_list(order):
-    """Write the emotions as a list, e.g. "- anger: annoyance, rage, hostility"."""
     lines = []
     for label in order:
         lines.append(f"- {label}: {DEFINITIONS[label]}")
@@ -62,15 +53,12 @@ SYSTEM_PROMPTS = {
 
 
 def answer_turn(labels):
-    """The correct answer as text, e.g. '["fear", "sadness"]' (labels in the fixed order)."""
+    # e.g. '["fear", "sadness"]'
     return json.dumps(sorted(labels, key=LABELS.index))
 
 
 def build_messages(text, variant="v1", demos=()):
-    """Make the chat messages for one subtitle.
-
-    demos is a list of (subtitle, labels) examples; empty for zero-shot.
-    """
+    # demos = list of (text, labels), empty for zero-shot
     messages = [{"role": "system", "content": SYSTEM_PROMPTS[variant]}]
     for demo_text, demo_labels in demos:
         messages.append({"role": "user", "content": f"Subtitle: {demo_text}"})

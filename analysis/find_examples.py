@@ -1,19 +1,9 @@
-"""Find test examples where fine-tuning helped or hurt, for the qualitative analysis.
+"""Find test lines where QLoRA is much better or much worse than five-shot
+(Jaccard difference of 0.5 or more), for the qualitative analysis.
 
-For every test line we compute the Jaccard score (overlap between predicted and gold
-labels, from 0 to 1) of a prompting system and of a QLoRA system. Then we count and show:
-  improved   QLoRA is at least 0.5 better than prompting on this line
-  worsened   QLoRA is at least 0.5 worse
-We always show the English AND the Spanish line, because the Spanish labels were copied
-from the English annotation: if the two lines do not say the same thing, the error may
-come from the alignment and not from the model. Lines where one side is more than twice
-as long as the other are marked as "check alignment". This is only a rough hint: always
-read both lines, some bad alignments have the same length.
-
-The output (results/analysis/examples_test.md) contains a few dozen subtitle lines.
-
-How to run it:
-  uv run python analysis/find_examples.py
+We print the EN and the ES line, because some errors come from bad alignments. Lines where
+one side is more than twice as long are marked "check alignment" (just a rough hint).
+Output: results/analysis/examples_test.md
 """
 
 import json

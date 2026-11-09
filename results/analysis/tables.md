@@ -56,32 +56,32 @@ Made by analysis/analyze.py from the files in results/.
 | Llama five-shot | en | 0.490 [0.460, 0.520] | 0.399 [0.370, 0.429] |
 | Llama five-shot | es | 0.437 [0.407, 0.467] | 0.347 [0.319, 0.376] |
 
-## 4. Paired comparisons on test (A − B)
+## 4. Paired comparisons on test (A - B)
 
 | Lang | Comparison | Metric | Difference | 95% CI | CI excludes 0 |
 |---|---|---|---|---|---|
-| en | Qwen five-shot − Qwen zero-shot | micro-F1 | +0.012 | [-0.017, +0.040] | no |
-| en | Qwen five-shot − Qwen zero-shot | Jaccard | +0.016 | [-0.011, +0.041] | no |
-| en | Qwen QLoRA EN − Qwen five-shot | micro-F1 | +0.043 | [+0.006, +0.076] | yes |
-| en | Qwen QLoRA EN − Qwen five-shot | Jaccard | +0.054 | [+0.019, +0.088] | yes |
-| en | Qwen QLoRA EN+ES − Qwen QLoRA EN | micro-F1 | -0.009 | [-0.036, +0.015] | no |
-| en | Qwen QLoRA EN+ES − Qwen QLoRA EN | Jaccard | -0.016 | [-0.043, +0.009] | no |
-| en | Llama five-shot − Qwen QLoRA EN | micro-F1 | +0.003 | [-0.030, +0.033] | no |
-| en | Llama five-shot − Qwen QLoRA EN | Jaccard | -0.032 | [-0.067, -0.002] | yes |
-| es | Qwen five-shot − Qwen zero-shot | micro-F1 | +0.057 | [+0.026, +0.089] | yes |
-| es | Qwen five-shot − Qwen zero-shot | Jaccard | +0.049 | [+0.019, +0.080] | yes |
-| es | Qwen QLoRA EN − Qwen five-shot | micro-F1 | +0.010 | [-0.026, +0.046] | no |
-| es | Qwen QLoRA EN − Qwen five-shot | Jaccard | +0.031 | [-0.003, +0.067] | no |
-| es | Qwen QLoRA ES − Qwen QLoRA EN | micro-F1 | +0.019 | [-0.006, +0.043] | no |
-| es | Qwen QLoRA ES − Qwen QLoRA EN | Jaccard | +0.021 | [-0.005, +0.046] | no |
-| es | Qwen QLoRA EN+ES − Qwen QLoRA ES | micro-F1 | +0.004 | [-0.024, +0.031] | no |
-| es | Qwen QLoRA EN+ES − Qwen QLoRA ES | Jaccard | -0.010 | [-0.041, +0.022] | no |
-| es | Llama five-shot − Qwen QLoRA ES | micro-F1 | +0.017 | [-0.013, +0.048] | no |
-| es | Llama five-shot − Qwen QLoRA ES | Jaccard | -0.022 | [-0.055, +0.009] | no |
+| en | Qwen five-shot - Qwen zero-shot | micro-F1 | +0.012 | [-0.017, +0.040] | no |
+| en | Qwen five-shot - Qwen zero-shot | Jaccard | +0.016 | [-0.011, +0.041] | no |
+| en | Qwen QLoRA EN - Qwen five-shot | micro-F1 | +0.043 | [+0.006, +0.076] | yes |
+| en | Qwen QLoRA EN - Qwen five-shot | Jaccard | +0.054 | [+0.019, +0.088] | yes |
+| en | Qwen QLoRA EN+ES - Qwen QLoRA EN | micro-F1 | -0.009 | [-0.036, +0.015] | no |
+| en | Qwen QLoRA EN+ES - Qwen QLoRA EN | Jaccard | -0.016 | [-0.043, +0.009] | no |
+| en | Llama five-shot - Qwen QLoRA EN | micro-F1 | +0.003 | [-0.030, +0.033] | no |
+| en | Llama five-shot - Qwen QLoRA EN | Jaccard | -0.032 | [-0.067, -0.002] | yes |
+| es | Qwen five-shot - Qwen zero-shot | micro-F1 | +0.057 | [+0.026, +0.089] | yes |
+| es | Qwen five-shot - Qwen zero-shot | Jaccard | +0.049 | [+0.019, +0.080] | yes |
+| es | Qwen QLoRA EN - Qwen five-shot | micro-F1 | +0.010 | [-0.026, +0.046] | no |
+| es | Qwen QLoRA EN - Qwen five-shot | Jaccard | +0.031 | [-0.003, +0.067] | no |
+| es | Qwen QLoRA ES - Qwen QLoRA EN | micro-F1 | +0.019 | [-0.006, +0.043] | no |
+| es | Qwen QLoRA ES - Qwen QLoRA EN | Jaccard | +0.021 | [-0.005, +0.046] | no |
+| es | Qwen QLoRA EN+ES - Qwen QLoRA ES | micro-F1 | +0.004 | [-0.024, +0.031] | no |
+| es | Qwen QLoRA EN+ES - Qwen QLoRA ES | Jaccard | -0.010 | [-0.041, +0.022] | no |
+| es | Llama five-shot - Qwen QLoRA ES | micro-F1 | +0.017 | [-0.013, +0.048] | no |
+| es | Llama five-shot - Qwen QLoRA ES | Jaccard | -0.022 | [-0.055, +0.009] | no |
 
 ## 5. Language gap on test (same lines in English and Spanish)
 
-| System | micro-F1 EN − ES | 95% CI |
+| System | micro-F1 EN - ES | 95% CI |
 |---|---|---|
 | Qwen zero-shot | +0.098 | [+0.065, +0.137] |
 | Qwen five-shot | +0.053 | [+0.022, +0.085] |
@@ -194,12 +194,12 @@ Made by analysis/analyze.py from the files in results/.
 
 | System | Inference ms/line (test) | Training min | Training peak GPU GB | Trainable params |
 |---|---|---|---|---|
-| Qwen zero-shot | 45 | – | – | – |
-| Qwen five-shot | 62 | – | – | – |
+| Qwen zero-shot | 45 | - | - | - |
+| Qwen five-shot | 62 | - | - | - |
 | Qwen QLoRA EN | 93 | 22 | 7.2 | 43.6M (0.53%) |
 | Qwen QLoRA ES | 90 | 22 | 7.2 | 43.6M (0.53%) |
 | Qwen QLoRA EN+ES | 96 | 43 | 7.2 | 43.6M (0.53%) |
-| Llama zero-shot | 45 | – | – | – |
-| Llama five-shot | 68 | – | – | – |
+| Llama zero-shot | 45 | - | - | - |
+| Llama five-shot | 68 | - | - | - |
 
 GPU: NVIDIA A100-PCIE-40GB.

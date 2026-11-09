@@ -1,18 +1,8 @@
 """Zero-shot and five-shot prompting.
 
-For every subtitle we build the prompt, let the model answer, read the answer with
-parse_output() and compute the metrics. Everything is saved in
-results/prompting/<experiment>/<split>/:
-  predictions_<lang>.jsonl   for every line: gold labels, model answer, parsed labels
-  prompt_example_<lang>.txt  the full prompt of the first line (for the report)
-  metrics.json               the metrics for each language
-  run_info.json              settings, model version, library versions, GPU and time
-
-How to run it:
-  uv run python prompting/run_prompting.py --config configs/prompting/qwen3-8b_zero-shot.yaml
-  uv run python prompting/run_prompting.py --config ... --limit 50      # quick test on 50 lines
-  uv run python prompting/run_prompting.py --config ... --variant v2    # other prompt wording
-  uv run python prompting/run_prompting.py --config ... --split test    # final evaluation
+Saves predictions, metrics and run info in results/prompting/<experiment>/<split>/.
+Example:
+  uv run python prompting/run_prompting.py --config configs/prompting/qwen3-8b_zero-shot.yaml --limit 50
 """
 
 import argparse
@@ -35,7 +25,6 @@ from prompting.prompts import build_messages
 
 
 def read_jsonl(path):
-    """Read a file with one JSON object per line."""
     records = []
     with open(path, encoding="utf-8") as f:
         for line in f:
@@ -44,7 +33,7 @@ def read_jsonl(path):
 
 
 def load_split(split):
-    """Load train, dev or test, and check it is exactly the split saved in splits/."""
+    # check that the data is the same as the ids in splits/
     records = read_jsonl(f"data/processed/{split}.jsonl")
     saved_ids = Path(f"splits/{split}_ids.txt").read_text().split()
     ids = [record["align_id"] for record in records]
@@ -54,7 +43,6 @@ def load_split(split):
 
 
 def load_demos(demos_file):
-    """Load the five-shot examples (their IDs are in splits/fewshot_ids.txt)."""
     train = {}
     for record in read_jsonl("data/processed/train.jsonl"):
         train[record["align_id"]] = record
@@ -82,7 +70,6 @@ def load_model(cfg):
 
 
 def model_commit(cfg):
-    """The exact version (commit) of the model on Hugging Face, saved for reproducibility."""
     try:
         return model_info(cfg["model"]["name"], revision=cfg["model"]["revision"]).sha
     except Exception:
@@ -91,7 +78,6 @@ def model_commit(cfg):
 
 @torch.no_grad()  # we only use the model, we do not train it here
 def generate(tokenizer, model, prompts, cfg):
-    """Give the prompts to the model in batches and return its answers as text."""
     answers = []
     batch_size = cfg["batch_size"]
     for start in range(0, len(prompts), batch_size):
@@ -117,7 +103,6 @@ def generate(tokenizer, model, prompts, cfg):
 
 
 def make_prompt(tokenizer, text, cfg, demos):
-    """Turn the chat messages into the exact text format the model expects."""
     messages = build_messages(text, cfg["prompt"]["variant"], demos)
     # Extra settings for the chat template, e.g. enable_thinking=False for Qwen3.
     template_settings = cfg.get("chat_template_kwargs") or {}
@@ -127,16 +112,13 @@ def make_prompt(tokenizer, text, cfg, demos):
 
 
 def evaluate_languages(tokenizer, model, records, languages, cfg, demos, out_dir):
-    """Run the model on every language and save predictions and metrics.
-
-    Also used by peft/evaluate_peft.py. Returns the time it took per language.
-    """
+    # also used by peft/evaluate_peft.py
     all_metrics = {}
     runtime = {}
     for lang in languages:
         print(f"[{cfg['experiment']}] {lang}: {len(records)} examples")
 
-        # The five-shot examples in the same language as the question.
+        # demos in the same language as the test line
         lang_demos = []
         for demo in demos:
             lang_demos.append((demo[f"text_{lang}"], demo["labels"]))
@@ -179,7 +161,6 @@ def evaluate_languages(tokenizer, model, records, languages, cfg, demos, out_dir
 
 
 def environment_info():
-    """GPU and library versions, saved with every run."""
     if torch.cuda.is_available():
         device = torch.cuda.get_device_name(0)
     else:

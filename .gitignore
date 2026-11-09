@@ -1,20 +1,20 @@
-# --- Python ---
+# python
 __pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
 .ipynb_checkpoints/
 
-# --- Secrets (never commit tokens) ---
+# secrets
 .env
 *.token
 
-# --- Data: do NOT commit XED copies (download with data/download_xed.sh) ---
+# data
 data/raw/
 data/processed/
 XED/
 
-# --- Models, caches, checkpoints, adapters ---
+# models, caches, checkpoints, adapters
 hf_cache/
 uv_cache/
 checkpoints/
@@ -27,11 +27,11 @@ adapters/
 wandb/
 runs/
 
-# --- SLURM logs ---
+# slurm logs
 slurm-*.out
 slurm*.txt
 
-# --- OS / editor ---
+# os / editor
 .DS_Store
 .vscode/
 .idea/

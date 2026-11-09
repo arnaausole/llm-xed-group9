@@ -1,7 +1,4 @@
-"""Read the answer of the model and compute the evaluation metrics.
-
-All experiments (prompting and QLoRA) use this file, so they are scored the same way.
-"""
+"""Parser for the model answers + the metrics. Every experiment uses this file."""
 
 import json
 import re
@@ -23,13 +20,8 @@ LABELS = ["anger", "anticipation", "disgust", "fear", "joy", "sadness", "surpris
 
 
 def parse_output(text):
-    """Turn the text of the model into a list of labels.
-
-    Returns (labels, status). The status is:
-      "ok"          we found at least one valid label
-      "empty_list"  the model answered with an empty list: []
-      "invalid"     there is no JSON list, or the list has no valid label
-    For "empty_list" and "invalid" the labels are [] (we call these answers malformed).
+    """Returns (labels, status). status is "ok", "empty_list" (the model said [])
+    or "invalid" (no JSON list, or no valid label in it). The last two count as malformed.
     """
     if text is None:
         text = ""
@@ -62,7 +54,7 @@ def parse_output(text):
 
 
 def to_matrix(label_lists):
-    """Turn lists of labels into a 0/1 table: one row per line, one column per emotion."""
+    # 0/1 matrix, one row per line and one column per emotion
     matrix = np.zeros((len(label_lists), len(LABELS)), dtype=int)
     for row, labels in enumerate(label_lists):
         for label in labels:
@@ -71,10 +63,7 @@ def to_matrix(label_lists):
 
 
 def compute_metrics(gold, pred, status=None):
-    """Compare the predicted labels with the gold labels.
-
-    If a metric divides by zero (e.g. an emotion is never predicted) it counts as 0.
-    """
+    # zero_division=0: if an emotion is never predicted its precision is 0
     y_true = to_matrix(gold)
     y_pred = to_matrix(pred)
 

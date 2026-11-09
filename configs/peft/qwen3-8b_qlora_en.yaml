@@ -1,12 +1,12 @@
-# English-only QLoRA fine-tuning of the primary model.
+# QLoRA, trained on English
 experiment: qwen3-8b_qlora_en
 
 model:
   name: Qwen/Qwen3-8B
-  revision: b968826d9c46dd6066d109eabc6255188de91218  # pinned: commit used for all dev runs
-  dtype: bfloat16  # use float16 on GPUs without bfloat16 support (e.g. V100)
+  revision: b968826d9c46dd6066d109eabc6255188de91218
+  dtype: bfloat16
 chat_template_kwargs:
-  enable_thinking: false  # same as prompting; also used to render training examples
+  enable_thinking: false  # no thinking
 
 prompt:
   variant: v1  # zero-shot prompt from prompting/prompts.py, no demonstrations
@@ -14,7 +14,7 @@ prompt:
 train_languages: [en]
 eval_languages: [en, es]
 
-quantization:  # QLoRA: frozen base model in 4-bit NF4 during training
+quantization:  # 4-bit base model
   load_in_4bit: true
   bnb_4bit_quant_type: nf4
   bnb_4bit_use_double_quant: true

@@ -1,17 +1,7 @@
-"""Make all tables and figures for the report from the saved results.
+"""Makes all tables (results/analysis/tables.md) and figures from the files in results/.
 
-It only reads files in results/ (no GPU needed). It writes to results/analysis/:
-  tables.md     all tables in Markdown, ready to copy into the report
-  fig_*.png     the figures
-
-Confidence intervals: we use the bootstrap. We pick 508 test lines at random (with
-replacement), compute the metric, and repeat this 1000 times. The middle 95% of these
-1000 values is the 95% confidence interval. To compare two systems we use the same
-random lines for both ("paired bootstrap"): if the interval of the difference does not
-contain 0, the difference is probably real and not luck.
-
-How to run it:
-  uv run python analysis/analyze.py
+Confidence intervals: paired bootstrap, 1000 resamples of the test lines (seed 42).
+We call a difference significant if its interval does not contain 0.
 """
 
 import json
@@ -58,7 +48,7 @@ COMPARISONS = [
     ("es", "Llama five-shot", "Qwen QLoRA ES"),
 ]
 
-# Colors (checked to be readable for colorblind people)
+# colors
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
 INK, MUTED, GRID = "#0b0b0b", "#52514e", "#e4e3df"
 LANGUAGE_COLOR = {"en": BLUE, "es": ORANGE}
@@ -77,7 +67,7 @@ def read_jsonl(path):
 
 
 def load_predictions(folder, split, lang):
-    """The predictions of one system, or None if this system was not run on this language."""
+    # None if the system was not run on this language
     path = RESULTS / folder / split / f"predictions_{lang}.jsonl"
     if not path.exists():
         return None
@@ -118,7 +108,7 @@ def mean_jaccard(counts, lines):
 
 
 def bootstrap_samples(n_lines):
-    """1000 lists of random line numbers (the same for every system)."""
+    # same random lines for every system (paired)
     rng = np.random.default_rng(SEED)
     return rng.integers(0, n_lines, size=(N_BOOTSTRAP, n_lines))
 
@@ -194,7 +184,7 @@ def confidence_tables(counts, samples):
             differences = [metric(ca, lines) - metric(cb, lines) for lines in samples]
             low, high = interval(differences)
             real = "yes" if low > 0 or high < 0 else "no"
-            rows.append([lang, f"{a} − {b}", metric_name, f"{difference:+.3f}",
+            rows.append([lang, f"{a} - {b}", metric_name, f"{difference:+.3f}",
                          f"[{low:+.3f}, {high:+.3f}]", real])  # fmt: skip
     header = ["Lang", "Comparison", "Metric", "Difference", "95% CI", "CI excludes 0"]
     comparisons_table = markdown_table(header, rows)
@@ -202,7 +192,7 @@ def confidence_tables(counts, samples):
 
 
 def language_gap_table(counts, samples):
-    """English minus Spanish for the same system. The lines are aligned, so this is paired too."""
+    # EN - ES, paired because the lines are aligned
     rows = []
     for _, name in SYSTEMS:
         if (name, "en") not in counts or (name, "es") not in counts:
@@ -213,7 +203,7 @@ def language_gap_table(counts, samples):
         differences = [micro_f1(c_en, lines) - micro_f1(c_es, lines) for lines in samples]
         low, high = interval(differences)
         rows.append([name, f"{difference:+.3f}", f"[{low:+.3f}, {high:+.3f}]"])
-    return markdown_table(["System", "micro-F1 EN − ES", "95% CI"], rows)
+    return markdown_table(["System", "micro-F1 EN - ES", "95% CI"], rows)
 
 
 def label_count_table(split):
@@ -234,7 +224,6 @@ def label_count_table(split):
 
 
 def per_label_table(split, lang):
-    """Precision / recall / F1 per emotion, one cell per emotion."""
     header = ["System"] + LABELS
     rows = []
     support = None
@@ -285,7 +274,7 @@ def cost_table():
         run_info = json.loads((RESULTS / folder / "test" / "run_info.json").read_text())
         seconds = sum(run_info["runtime_seconds"].values())
         per_line = 1000 * seconds / (run_info["n_examples"] * len(run_info["runtime_seconds"]))
-        train_minutes, memory, trainable = "–", "–", "–"
+        train_minutes, memory, trainable = "-", "-", "-"
         train_info_path = RESULTS / folder / "train_info.json"
         if train_info_path.exists():
             train_info = json.loads(train_info_path.read_text())
@@ -490,7 +479,7 @@ def main():
         ("2. Dev results", results_table("dev")),
         (f"3. Test results with 95% bootstrap confidence intervals ({N_BOOTSTRAP} samples, seed {SEED})",
          systems_ci),
-        ("4. Paired comparisons on test (A − B)", comparisons),
+        ("4. Paired comparisons on test (A - B)", comparisons),
         ("5. Language gap on test (same lines in English and Spanish)", language_gap_table(counts, samples)),
         ("6. Number of predicted labels, precision and recall (test)", label_count_table("test")),
         ("7a. Precision / recall / F1 per emotion, English (test)", per_label_table("test", "en")),

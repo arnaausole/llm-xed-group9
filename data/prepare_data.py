@@ -1,27 +1,10 @@
-"""Build the English-Spanish dataset from XED and make the fixed train/dev/test split.
+"""Make the English-Spanish data from XED and split it into train/dev/test.
 
-Steps:
-1. Read the Spanish lines with their emotions (Projections/es-projections.tsv).
-2. Read the alignments (subtitle-retrieval/students/pairs-es.txt). Each row has 6 columns:
-   source file, Spanish file, source line ids, Spanish line ids, source text, Spanish text.
-3. Find the alignment row of each Spanish line. Both files are in the same order, so we
-   go through them together and match on the Spanish text.
-4. Keep only pairs whose source file is English ("en/..."). Many sources in pairs-es.txt
-   are Danish files ("da/..."), so their text is Danish, not English. We drop those.
-   The English and Spanish line share the same emotions (the Spanish emotions were
-   copied from the English annotation).
-5. Find duplicates (lines with the same English or the same Spanish text), so that we
-   can keep all copies of a line in the same part of the split.
-6. Split 70% train / 20% dev / 10% test with seed 42, keeping the emotions balanced
-   between the three parts (multi-label stratification).
+We link every line of es-projections.tsv to its row in pairs-es.txt and keep only the
+pairs with an English source file (many come from Danish files, see README). Then we
+split 70/20/10 with seed 42, keeping duplicate lines in the same split.
 
-Output:
-  data/processed/*.jsonl   the data with the subtitle text (not in git)
-  splits/*_ids.txt         only the IDs of each part (in git)
-  splits/stats.json        counts for the report (in git)
-
-How to run it:
-  uv run python data/prepare_data.py --xed data/raw/XED --seed 42
+Writes data/processed/*.jsonl (not in git) and splits/*_ids.txt + splits/stats.json.
 """
 
 import argparse
@@ -76,7 +59,7 @@ def remove_quotes(text):
 
 
 def make_id(pair):
-    """A short ID made from the files and line numbers of the pair (always the same)."""
+    # id = hash of the two file names and the line numbers
     key = "|".join(pair[:4])
     return hashlib.sha1(key.encode("utf-8")).hexdigest()[:12]
 
@@ -116,7 +99,7 @@ def link(projections, pairs):
 
 
 def normalize(text):
-    """Remove extra spaces, so that "Hi  there " and "Hi there" count as the same text."""
+    # "Hi  there " -> "Hi there"
     return re.sub(r"\s+", " ", text).strip()
 
 

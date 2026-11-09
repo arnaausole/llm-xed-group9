@@ -1,18 +1,8 @@
-"""Choose the five examples used in five-shot prompting.
+"""Pick the five examples for five-shot prompting (seed 42).
 
-Rules:
-  - they come from the training set
-  - they have 1 or 2 emotions
-  - the English and the Spanish line are both 15-120 characters long
-  - the line has no duplicates in the data
-We shuffle these candidates (seed 42) and pick five, one by one. Each time we take the
-first candidate that adds the most emotions we do not have yet, so the five examples
-show as many of the eight emotions as possible.
-
-The same five IDs are used for all models (English lines for English, Spanish for Spanish).
-
-How to run it:
-  uv run python prompting/select_demos.py --seed 42
+Candidates are train lines with 1-2 emotions, EN and ES text of 15-120 characters and no
+duplicates. We shuffle them and greedily take the one that adds the most new emotions.
+The same 5 ids are used for every model and language.
 """
 
 import argparse

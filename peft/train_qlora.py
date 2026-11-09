@@ -1,18 +1,9 @@
-"""QLoRA fine-tuning of Qwen3-8B (English-only, Spanish-only or bilingual).
+"""QLoRA fine-tuning of Qwen3-8B (EN, ES or both, depending on the config).
 
-Idea: the big model is loaded in 4 bits and stays frozen. We add small LoRA layers and
-only train those. Each training example is:
-  input:  the zero-shot prompt with one subtitle (exactly as in prompting)
-  output: the correct labels, e.g. ["fear", "sadness"]
-The model only learns from the output part.
-
-We save a checkpoint after every epoch and keep the one with the lowest loss on dev.
-Everything goes to outputs/peft/<experiment>/ (not in git, too big):
-  adapter/          the trained LoRA layers we keep
-  train_info.json   losses, number of trainable parameters, time, GPU memory
-
-How to run it:
-  uv run python peft/train_qlora.py --config configs/peft/qwen3-8b_qlora_en.yaml
+The base model is loaded in 4 bit and frozen, only the LoRA layers are trained.
+Input = the zero-shot prompt, output = the gold labels as a JSON list, and the loss is
+only on the output. We keep the epoch with the lowest dev loss.
+The adapter and train_info.json go to outputs/peft/<experiment>/ (too big for git).
 """
 
 import argparse
@@ -40,7 +31,7 @@ from prompting.run_prompting import environment_info, load_split, make_prompt, m
 
 
 def build_dataset(records, languages, tokenizer, cfg):
-    """Make the (prompt, answer) pairs. Bilingual = first all English, then all Spanish."""
+    # bilingual: first all English examples, then all Spanish
     rows = []
     for lang in languages:
         for record in records:
